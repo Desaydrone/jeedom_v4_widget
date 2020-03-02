@@ -7,17 +7,16 @@
     var niv_warm = 32;
 </script>
 <div style="margin:0px; padding:0px; width:85px; height:85px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#">
-		<div class="icone#id# box_haut" style="z-index:1">
+		<div class="icone box_haut" style="z-index:1">
 	    </div>
 		<div style="z-index:2;">
-    	  	<div class="value-entier#id#">
+    	  	<div class="value-entier">
       			<div class="battery">
-	  				<div class="battery-level#id# battery-level"></div>
+	  				<div class="battery-level battery-level"></div>
 				</div>
      		</div>
-			<div class="NomCmd#id# box_bas">#name_display#</div>
-			<div class="unite#id#">#state# #unite#</div>
-      		<div class="value-decimal#id#"></div>
+			<div class="NomCmd box_bas">#name_display#</div>
+			<div class="unite">#state# #unite#</div>
 		</div>
       
     </div>
@@ -81,7 +80,7 @@
 			-webkit-border-radius: 0px 0px 8px 8px;
 		}
   
-  		div.value-entier#id# {
+  		div.value-entier {
           	font-size:38px;
           	font-weight:bold;
             position:absolute;
@@ -94,7 +93,7 @@
 		    letter-spacing:0px;
 	  	}
     
-      	div.unite#id#, div.value-decimal#id# {
+      	div.unite {
           	font-size:13px;
           	font-weight:bold; 
             position:absolute;
@@ -105,7 +104,7 @@
 		    letter-spacing:0px;
 	  	}
 
-      	div.NomCmd#id# {
+      	div.NomCmd {
           	font-size:1em;
           	font-weight:bold; 
             position:absolute;
@@ -150,7 +149,7 @@
   		}
 		
 		/* class permettant d'afficher la jauge de niveau de batterie */
-		.battery-level#id# {
+		.battery-level {
 			background: #30b455;  
 			position: absolute;
 			bottom: 0px;
@@ -159,11 +158,11 @@
   		}
   
   		/* permet le changement de la couleur du niveau de la jauge par defaut orange*/
-		.battery-level#id#.warn {
+		.battery-level.warn {
     			background-color: var(--warn);
 			}
   		/* permet le changement de la couleur du niveau de la jauge par defaut rouge et le fait clignoter*/
-		.battery-level#id#.alertniv {
+		.battery-level.alertniv {
 				background-color: var(--alertniveau);
           		/* Permet de faire clignoté la petite barre rouge */
                 text-decoration: blink;
@@ -173,7 +172,7 @@
 				-webkit-animation-timing-function:ease-in-out;
 				-webkit-animation-direction: alternate;
   		} 
-		.battery-level#id#.alertniv::before {
+		.battery-level.alertniv::before {
                 /* génère l'image de l'éclaire */
                 background-image: url('data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22utf-8%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cg%3E%3C%2Fg%3E%20%3Cpath%20fill%3D%22%23e81309%22%20d%3D%22M17.927%2012l2.68-10.28c0.040-0.126%200.060-0.261%200.060-0.4%200-0.726-0.587-1.32-1.314-1.32-0.413%200-0.78%200.187-1.019%200.487l-13.38%2017.353c-0.18%200.227-0.287%200.513-0.287%200.827%200%200.733%200.6%201.333%201.333%201.333h8.073l-2.68%2010.28c-0.041%200.127-0.060%200.261-0.060%200.4%200.001%200.727%200.587%201.32%201.314%201.32%200.413%200%200.78-0.186%201.020-0.487l13.379-17.353c0.181-0.227%200.287-0.513%200.287-0.827%200-0.733-0.6-1.333-1.333-1.333h-8.073z%22%3E%3C%2Fpath%3E%3C%2Fsvg%3E'); background-repeat: no-repeat;
                 background-size: 18px;
@@ -215,20 +214,20 @@
           
           	if (valeur < niv_alert) {
                 // Modifiction de la couleur du cadre de la box supérieur en fonction de la batterie
-              	cmd.find('.icone#id#').css('border','2px solid var(--alertniv)');
-              	cmd.find('.battery-level#id#').addClass('alertniv');
-              	cmd.find(".NomCmd#id#").addClass('alertniv txt_blanc'); 
+              	cmd.find('.icone').css('border','2px solid var(--alertniv)');
+              	cmd.find('.battery-level').addClass('alertniv');
+              	cmd.find(".NomCmd").addClass('alertniv txt_blanc'); 
             }
 			else if (valeur >= niv_alert && valeur < niv_warm) {
-              	cmd.find('.icone#id#').css('border','2px solid var(--warn)');
-              	cmd.find('.battery-level#id#').addClass('warn');
-              	cmd.find('.NomCmd#id#').addClass('warn txt_blanc');             
+              	cmd.find('.icone').css('border','2px solid var(--warn)');
+              	cmd.find('.battery-level').addClass('warn');
+              	cmd.find('.NomCmd').addClass('warn txt_blanc');             
 			}
           
           	//Pour les valeurs de batterie comprisent entre 32% et 100% on attribue la même couleur au cadres et au niveau de batterie
           	if (valeur >=32 && valeur <=100){
-              	cmd.find('.icone#id#').css('border','2px solid var(--vert)');
-              	cmd.find('.NomCmd#id#').addClass('vert txt_blanc');                           
+              	cmd.find('.icone').css('border','2px solid var(--vert)');
+              	cmd.find('.NomCmd').addClass('vert txt_blanc');                           
             }
     					
 			$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
