@@ -1,0 +1,91 @@
+<div style="margin:0px; padding:0px; width:85px; height:45px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#">
+	<div style="z-index:2;">
+		<div class="NomCmd">#name_display#</div>
+      	<div class="led">
+			<div class="led_cercle#id#">
+				<div class="spot"></div>
+          	</div>
+      	</div>
+    </div>
+</div>
+
+<style>
+  
+  	:root{
+    		--couleuractualisee#id#:#838383;
+      		--rouge :#da3037;
+      		--vert : #30b455;
+      		--gris : #838383;
+           	--noir: #000000;
+           	--blanc: #ffffff;
+   		
+  	}
+	@keyframes glowing {
+  		0% { box-shadow: 0 0 -10px var(--blanc); }
+  		40% { box-shadow: 0 0 20px var(--blanc); }
+  		60% { box-shadow: 0 0 20px var(--blanc); }
+  		100% { box-shadow: 0 0 -10px var(--blanc); }
+	}
+    @-webkit-keyframes blinker {
+      from {opacity: 1.0;}
+      to {opacity: 0.0;}
+    } 
+	.led{
+		position:absolute;
+    	top:5px;
+    	margin-top: 8px;
+    	height : 20px;
+    	width : 85px;
+    	vertical-align:top; 
+    	z-index:2;
+	}
+	.led_cercle#id#	{
+		border-radius: 50%;
+		border: 2px solid var(--couleuractualisee#id#);
+		width: 16px;
+		height: 16px;
+		text-align: center;
+		position: relative;
+		/*animation: glowing 0.5s infinite;*/
+      	/*animation: blinker 0.8s linear infinite;*/
+  	}
+	.led_cercle#id# .spot {
+		border-radius: 50%;
+		border: 2px solid var(--couleuractualisee#id#);
+		width: 10px;
+		height: 10px;
+		display: inline-block;
+		background-color: var(--couleuractualisee#id#);
+	}
+	div.NomCmd {
+    	font-size:1em;
+    	font-weight:bold; 
+    	position:absolute;
+    	vertical-align:bottom;
+    	top:82%; 
+    	left:0%; 
+    	z-index:2;
+    	padding:0px;
+    	margin:0px;
+    	width : 85px;
+    	height : 25px;
+  	}          
+</style>
+<script>
+  	jeedom.cmd.update['#id#'] = function(_options){ 
+      var cmd = $('.cmd[data-cmd_id=#id#]');
+
+      // Récupération des valeurs
+      var valeur = _options.display_value;  
+      if (valeur == 0){
+        document.documentElement.style.setProperty('--couleuractualisee#id#','var(--rouge');
+        cmd.find('.led_cercle#id#').css('animation','blinker 0.8s linear infinite');
+      }
+      else if (valeur == 1){
+        document.documentElement.style.setProperty('--couleuractualisee#id#','var(--vert');
+      }
+		$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+  	}
+	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+    
+</script>
