@@ -1,0 +1,135 @@
+<div style="margin:0px; padding:0px; width:85px; height:85px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#">
+	<div class="box_haut_presence" style="z-index:1"></div>
+	<div style="z-index:2;">
+		<div class="NomCmd box_bas_presence">#name_display#</div>
+      	<div class="user_presence">
+			<div class="face_circle_presence"></div>
+			<div class="body_presence"></div>
+      	</div>
+    </div>
+</div>
+<style>
+  		/* Définition de variable CSS contenant les valeurs des couleurs) */
+  		:root {
+          	--absent: #da3037;
+          	--present: #30b455; /*#829f25;*/
+          	--noir: #000000;
+          	--gris: #838383;
+          	--blanc: #ffffff;
+		}
+  
+  		.absent{
+          	color: var(--absent);
+  		}
+  
+   		.present{
+        	color : var(--present);
+  		}
+  
+    	.txt_noir{
+          	color: var(--noir);
+		}
+  		.txt_blanc{
+          	color: var(--blanc);
+		}
+
+  		/* class css permetant de faire une box arrondie sur les angles supérieur gauche et droit */
+  		.box_haut_presence{
+          	margin:0px;
+          	padding:0px;
+			width : 85px;
+          	height : 70px;
+			border-radius: 8px 8px 0px 0px;
+			-moz-border-radius: 8px 8px 0px 0px;
+			-webkit-border-radius: 8px 8px 0px 0px;  
+          	background-color:var(--blanc)!important;
+  		}
+
+		[data-theme="core2019_Dark"] .box_haut_presence{
+          	margin:0px;
+          	padding:0px;
+			width : 85px;
+          	height : 70px;
+			border-radius: 8px 8px 0px 0px;
+			-moz-border-radius: 8px 8px 0px 0px;
+			-webkit-border-radius: 8px 8px 0px 0px;  
+          	background-color: transparent!important;
+
+  		}
+  
+  		/* class css permetant de faire une box arrondie sur les angles inférieur gauche et droit */
+    	.box_bas_presence
+    	{
+          	padding:0px;
+          	margin:0px;
+			width : 85px;
+          	height : 25px;
+			border-radius: 0px 0px 8px 8px;
+          	-moz-border-radius: 0px 0px 8px 8px;
+			-webkit-border-radius: 0px 0px 8px 8px;
+		}
+  
+      	.user_presence{
+            position:absolute;
+          	top:5px;
+          	margin-top: 5px;
+			height : 60px;
+          	width : 85px;
+          	vertical-align:middle; 
+          	z-index:2;
+          	
+  		}
+ 		.face_circle_presence {
+			height : 24px;
+          	width : 24px;
+          	border: .5em solid transparent;
+          	border-radius: 50%;
+          	z-index:2;
+	  	}
+
+      	.body_presence {
+			position: relative;
+          	height: 20px;
+          	z-index: 2;
+          	width: 30px;
+          	border-radius : 5px 5px 0 0;
+	  	}
+
+      	.NomCmd {
+          	font-size:1em;
+          	font-weight:bold; 
+            position:absolute;
+            vertical-align:middle;
+          	top:82%; 
+       		left:0%; 
+            z-index:2;    
+	  	}  
+</style>
+
+<script>
+		jeedom.cmd.update['#id#'] = function(_options){ 
+		var cmd = $('.cmd[data-cmd_id=#id#]');
+
+        // Récupération des valeurs
+        var valeur = _options.display_value;
+          
+        if (valeur == 0){
+          	cmd.find('.box_haut_presence').css('border','2px solid var(--absent)');
+          	cmd.find('.box_bas_presence').css('background-color','var(--absent)');
+          	cmd.find('.body_presence').css('background-color','var(--absent)');
+          	cmd.find('.face_circle_presence').css('background-color','var(--absent)');
+          	cmd.find('.NomCmd').addClass('absent txt_blanc');
+        }
+        else if(valeur==1){
+          	cmd.find('.box_haut_presence').css('border','2px solid var(--present)');
+          	cmd.find('.box_bas_presence').css('background','var(--present)');
+          	cmd.find('.body_presence').css('background','var(--present)');
+          	cmd.find('.face_circle_presence').css('background','var(--present)');
+			cmd.find('.NomCmd').addClass('present txt_blanc');
+        }
+	}
+	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+
+  
+</script>
+  
