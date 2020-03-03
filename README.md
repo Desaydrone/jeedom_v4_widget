@@ -1,4 +1,4 @@
-Repository de widgets pour jeedom V4
+# Repository de widgets pour jeedom V4
 
 Collection personnel de widget
 
@@ -12,5 +12,5 @@ Affichage du niveau de batterie. Tout est géré en CSS, le niveau de la batteri
 Affichage de la température avec changement de couleur en fonction de celle-ci
 
 <!--stackedit_data:
-eyJoaXN0b3J5IjpbNTExNzkzMjI3XX0=
+eyJoaXN0b3J5IjpbLTE4NDcwMzQ5MzAsNTExNzkzMjI3XX0=
 -->
