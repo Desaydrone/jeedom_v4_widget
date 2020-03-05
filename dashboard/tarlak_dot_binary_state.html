@@ -10,7 +10,7 @@
 </div>
 
 <style>
-  
+
   	:root{
     		--couleuractualisee#id#:#838383;
       		--rouge :#da3037;
@@ -18,7 +18,7 @@
       		--gris : #838383;
            	--noir: #000000;
            	--blanc: #ffffff;
-   		
+
   	}
 	@keyframes glowing {
   		0% { box-shadow: 0 0 -10px var(--blanc); }
@@ -29,14 +29,14 @@
     @-webkit-keyframes blinker {
       from {opacity: 1.0;}
       to {opacity: 0.0;}
-    } 
+    }
 	.led#id#{
 		position:absolute;
     	top:5px;
     	margin-top: 8px;
     	height : 20px;
     	width : 85px;
-    	vertical-align:top; 
+    	vertical-align:top;
     	z-index:2;
 	}
 
@@ -54,38 +54,40 @@
 		height: 90%;
       	margin: auto;
 		background-color: var(--couleuractualisee#id#);
-      
+
 	}
-  
+
 	div.NomCmd {
     	font-size:1em;
-    	font-weight:bold; 
+    	font-weight:bold;
     	position:absolute;
     	vertical-align:bottom;
-    	top:82%; 
-    	left:0%; 
+    	top:82%;
+    	left:0%;
     	z-index:2;
     	padding:0px;
     	margin:0px;
     	width : 85px;
     	height : 25px;
-  	}          
+  	}
 </style>
 <script>
-  	jeedom.cmd.update['#id#'] = function(_options){ 
+  	jeedom.cmd.update['#id#'] = function(_options){
       var cmd = $('.cmd[data-cmd_id=#id#]');
 
       // Récupération des valeurs
-      var valeur = _options.display_value;  
+      var valeur = _options.display_value;
       if (valeur == 0){
         document.documentElement.style.setProperty('--couleuractualisee#id#','var(--rouge');
         cmd.find('.led_cercle#id#').css('animation','blinker 0.8s linear infinite');
       }
       else if (valeur == 1){
         document.documentElement.style.setProperty('--couleuractualisee#id#','var(--vert');
+				cmd.find('.led_cercle#id#').css('animation','none');
+
       }
 		$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
   	}
 	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
-    
+
 </script>
