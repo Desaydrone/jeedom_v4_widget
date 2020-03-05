@@ -1,0 +1,133 @@
+<div style="margin:0px; padding:0px; width:100%; height:30px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#">
+	<div class="container#id#" style="z-index:1">
+        <div class="progression">
+			<div class="progression-bar"></div>
+		</div>
+	<div class="value-entier#id#">#state# #unite#</div>
+	</div>
+</div>
+<div style="z-index:2;">
+	<div class="NomCmd#id#">#name_display#</div>
+</div>
+
+<style>
+	:root {
+    	--rouge: #f63a0f;
+    	--orange: #f27011;
+		--jaune: #f2b01e;
+      	--jaune_clair: #f2d31b;
+      	--vert: #86e01e;
+      	--noir: #000000;
+      	--blanc:#ffffff;
+  }
+
+/*
+ * Copyright (c) 2012-2013 Thibaut Courouble
+ * http://www.cssflow.com
+ * Licensed under the MIT License
+ *
+ * Sass/SCSS source: https://goo.gl/UhXKg
+ * PSD by Vin Thomas: https://goo.gl/n1M2e
+ */
+
+	.container#id# {
+  		margin: 5px auto;
+  		width: 90%;
+  		text-align: center;
+	}
+
+	.container#id# .progression {
+  		margin: 0 auto;
+  		width: 100%;
+	}
+
+	.progression {
+  		padding: 4px;
+  		background: rgba(131, 131, 131, 0.25);
+  		border-radius: 6px;
+	}
+
+	.progression-bar {
+  		height: 16px;
+  		border-radius: 4px;
+  		-webkit-transition: 0.4s linear;
+  		-moz-transition: 0.4s linear;
+  		-o-transition: 0.4s linear;
+  		transition: 0.4s linear;
+  		-webkit-transition-property: width, background-color;
+  		-moz-transition-property: width, background-color;
+  		-o-transition-property: width, background-color;
+  		transition-property: width, background-color;
+  		width: 0%;
+  		background-color: var(--noir);
+
+  	}
+  		div.value-entier#id# {
+
+          	font-size:12px;
+          	font-weight:bold;
+            position:relative;
+       		/*right:10px; */
+          	top: -19px;
+            z-index:2;
+		    letter-spacing:0px;
+          	color:var(--blanc);
+	  	}
+</style>
+<script>
+	jeedom.cmd.update['#id#'] = function(_options){
+		var cmd = $('.cmd[data-cmd_id=#id#]');
+
+      	// Récupération des valeurs
+        var valeur = _options.display_value;
+      	var inverser = is_numeric('#inverser#') ? parseFloat('#inverser#'):0;
+
+        if (valeur > 1 && valeur <=100) {
+      		cmd.find('.progression-bar').attr('style','width: '+valeur+'%;');
+        }
+      	else if(valeur==0)
+        {
+      		cmd.find('.progression-bar').attr('style','width: 1%;');
+        }
+
+      	if (valeur >= 0 && valeur < 20) {
+	        cmd.find('.progression-bar').css('backgroundColor', 'var(--rouge)');
+	        if (inverser == 1)
+    	    {
+              cmd.find('.progression-bar').css('backgroundColor', 'var(--vert)');
+        	}
+        }
+      	else if (valeur >= 20 && valeur < 40) {
+            cmd.find('.progression-bar').css('backgroundColor', 'var(--orange)');
+	        if (inverser == 1)
+    	    {
+              cmd.find('.progression-bar').css('backgroundColor', 'var(--jaune_clair)');
+          	}
+        }
+      	else if (valeur >= 40 && valeur < 60) {
+            cmd.find('.progression-bar').css('backgroundColor', 'var(--jaune)');
+	        if (inverser == 1)
+    	    {
+              cmd.find('.progression-bar').css('backgroundColor', 'var(--jaune)');
+        	}
+        }
+      	else if (valeur >= 60 && valeur < 80) {
+            cmd.find('.progression-bar').css('backgroundColor', 'var(--jaune_clair)');
+	        if (inverser == 1)
+    	    {
+        	    cmd.find('.progression-bar').css('backgroundColor', 'var(--orange)');
+          	}
+        }
+      	else if (valeur >= 80 && valeur <= 100) {
+            cmd.find('.progression-bar').css('backgroundColor', 'var(--vert)');
+	        if (inverser == 1)
+    	    {
+        	    cmd.find('.progression-bar').css('backgroundColor', 'var(--rouge)');
+          	}
+        }
+
+      $('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
+	}
+	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+
+</script>
