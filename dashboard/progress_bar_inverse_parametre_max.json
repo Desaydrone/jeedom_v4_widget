@@ -1,6 +1,6 @@
 {
   "id": "",
-  "name": "progress_bar_inverse",
+  "name": "progress_bar_inverse_parametre_max",
   "type": "info",
   "subtype": "numeric",
   "template": "tmplmultistate",
@@ -15,28 +15,28 @@
   "test": [
     {
       "operation": "#value# >=(#maximum#/5) && #value# <((#maximum#/5)*2)",
-      "state_light": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#86e01e !important;width:calc((#value#*100%)/#maximum#);">     #value# #unite#  </div> </div>",
-      "state_dark": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#86e01e !important;width:calc((#value#*100%)/#maximum#);">     #value# #unite#  </div> </div>"
+      "state_light": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#86e01e !important;width:calc((#value#*100%)/#maximum#);\">     #value# #unite#  </div> </div>",
+      "state_dark": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#86e01e !important;width:calc((#value#*100%)/#maximum#);\">     #value# #unite#  </div> </div>"
     },
     {
       "operation": "#value# >=((#maximum#/5)*2) && #value# <((#maximum#/5)*3)",
-      "state_light": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f2d31b !important;width:calc((#value#*100%)/#maximum#);">     #value# #unite#  </div> </div>",
-      "state_dark": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f2d31b !important;width:calc((#value#*100%)/#maximum#);">     #value# #unite#  </div> </div>"
+      "state_light": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f2d31b !important;width:calc((#value#*100%)/#maximum#);\">     #value# #unite#  </div> </div>",
+      "state_dark": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f2d31b !important;width:calc((#value#*100%)/#maximum#);\">     #value# #unite#  </div> </div>"
     },
     {
       "operation": "#value# >=((#maximum#/5)*3) && #value# <((#maximum#/5)*4)",
-      "state_light": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f2b01e !important;width:calc((#value#*100%)/#maximum#);">     #value# #unite#  </div> </div>",
-      "state_dark": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f2b01e !important;width:calc((#value#*100%)/#maximum#);">     #value# #unite#  </div> </div>"
+      "state_light": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f2b01e !important;width:calc((#value#*100%)/#maximum#);\">     #value# #unite#  </div> </div>",
+      "state_dark": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f2b01e !important;width:calc((#value#*100%)/#maximum#);\">     #value# #unite#  </div> </div>"
     },
     {
       "operation": "#value# >=((#maximum#/5)*4) && #value# <((#maximum#/5)*5)",
-      "state_light": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f27011 !important;width:calc((#value#*100%)/#maximum#);">     #value# #unite#  </div> </div>",
-      "state_dark": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f27011 !important;width:calc((#value#*100%)/#maximum#);">     #value# #unite#  </div> </div>"
+      "state_light": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f27011 !important;width:calc((#value#*100%)/#maximum#);\">     #value# #unite#  </div> </div>",
+      "state_dark": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f27011 !important;width:calc((#value#*100%)/#maximum#);\">     #value# #unite#  </div> </div>"
     },
     {
       "operation": "#value# >=((#maximum#/5)*5) && #value# <=#maximum#",
-      "state_light": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f63a0f !important;width:calc((#value#*100%)/#maximum#);">     #value# #unite#  </div> </div>",
-      "state_dark": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f63a0f !important;width:calc((#value#*100%)/#maximum#);">     #value# #unite#  </div> </div>"
+      "state_light": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f63a0f !important;width:calc((#value#*100%)/#maximum#);\">     #value# #unite#  </div> </div>",
+      "state_dark": "<div class=\"progress\" style=\"border-radius:4px; width:100px;\">   <div class=\"progress-bar\" role=\"progressbar\" aria-valuenow=\"2\" aria-valuemin=\"0\" aria-valuemax=\"100\" style=\"min-width: 2em;  background-color:#f63a0f !important;width:calc((#value#*100%)/#maximum#);\">     #value# #unite#  </div> </div>"
     }
   ],
   "jeedomCoreVersion": "4.0.43"

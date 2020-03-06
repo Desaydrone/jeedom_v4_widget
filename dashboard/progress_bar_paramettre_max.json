@@ -1,6 +1,6 @@
 {
   "id": "",
-  "name": "progress_bar",
+  "name": "progress_bar_parametre_max",
   "type": "info",
   "subtype": "numeric",
   "template": "tmplmultistate",
