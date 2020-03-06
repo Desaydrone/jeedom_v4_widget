@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
     <style>
 
-      body{background-color: #565656;margin-top: 150px;}
+      body{background-color: #838383;margin-top: 150px;}
       :root {
         --rouge: #f63a0f;
         --orange: #f27011;
@@ -156,20 +156,21 @@
         -o-transition: height 0.6s ease;
         transition: height 0.6s ease;
         display:flex;background-color:#f63a0f !important;
-        height: 65%; /*hauteur a modifieir via javascript*/
+        height: #value#%; /*hauteur a modifieir via javascript*/
       }
       .vertical_value{
         margin:auto;
         transform:rotate(180deg);
       }
+      .content-st{
+        visibility:hidden;
+      }
     </style>
   </head>
 
   <body>
-
-   <div class="container">
-       <div class="row">
-           <div class="col-md-3 col-sm-3">
+           <div class="content-lg">
+              <!-- Progress bar en cercle-->
                <div class="progress cercle val_deux">
                    <span class="progress-left cercle-left">
                        <span class="progress-bar cercle-bar"></span>
@@ -177,26 +178,42 @@
                    <span class="cercle-right">
                        <span class="cercle-bar"></span>
                    </span>
-                   <div class="cercle-value">90%</div>
+                   <div class="cercle-value">#value# #unite#</div>
                </div>
+               <!--Fin progress bar en cercle -->
            </div>
-           <div class="col-md-3 col-sm-3">
+
+           <div class="content-sm">
+             <!--Progress bar horizontal -->
              <div class="progress horizontale">
               <div class="progress-bar horizontal_bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">
                      #value# #unite#
               </div>
              </div>
+             <!--Fin progress bar horizontale -->
            </div>
-           <div class="col-md-3 col-sm-3">
-             <div class="progress vertical" >
+
+           <div class="content-xs">
+             <!--Progress bar vertical -->
+            <div class="progress vertical" >
                <div class="progress-bar vertical_bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
                  <div class="vertical_value">#value# #unite#</div>
                </div>
              </div>
-           </div>"
-       </div>
-   </div>
+             <!--Fin progress bar vertical -->
+           </div>
 
+           <div class="widget4">
+             <div class="thumbnail">
+               <h4>Pour la partie javascript prévoir</h4>
+                <p>- Tester #unite# afin de déterminé a minima si c'est un % ou un numérique
+                  Si c'est un numérique récupérer la valeur max si elle existe sinon valeur par defaut
+                </p>
+                <p>
+                  - Pour la partie progress bar en circle ne pas oublié qu'il y a deux demis cercle pour le calcul
+                </p>
+             </div>
+           </div>
 
   </body>
 
