@@ -6,6 +6,7 @@
     <title></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous" />
     <style>
+
       :root {
         --rouge: #f63a0f;
         --orange: #f27011;
@@ -14,12 +15,17 @@
         --vert: #86e01e;
         --noir: #000000;
         --blanc: #ffffff;
-        --degres:50;
+        --degresd:180deg;
+        --degresg:180deg;
 
-        /*calcul de degres : pourcentage * 3,6 */
+        /* Dans le CSS il existe 2 demi cercle, le premier sur la partie droite va de 0 a 180°
+          Le second sur la partie gauche vas de 180 a 360
+          Pour le calcul il faudra faire pourcentage * 3,6 - 180 si supérieur a 50%
+
+        calcul de degres : pourcentage * 3,6 */
       }
 
-      .progress{
+      .cercle{
           width: 100px;
           height: 100px;
           line-height: 100px;
@@ -28,7 +34,8 @@
           box-shadow: none;
           position: relative;
       }
-      .progress:after{
+
+       .cercle:after{
           content: "";
           width: 100%;
           height: 100%;
@@ -38,7 +45,7 @@
           top: 0;
           left: 0;
       }
-      .progress > span{
+      .cercle > span{
           width: 50%;
           height: 100%;
           overflow: hidden;
@@ -46,10 +53,10 @@
           top: 0;
           z-index: 1;
       }
-      .progress .progress-left{
+      .cercle .cercle-left{
           left: 0;
       }
-      .progress .progress-bar{
+      .cercle .cercle-bar{
           width: 100%;
           height: 100%;
           background: none;
@@ -58,7 +65,7 @@
           position: absolute;
           top: 0;
       }
-      .progress .progress-left .progress-bar{
+      .cercle .cercle-left .cercle-bar{
           left: 100%;
           border-top-right-radius: 80px;
           border-bottom-right-radius: 80px;
@@ -66,10 +73,10 @@
           -webkit-transform-origin: center left;
           transform-origin: center left;
       }
-      .progress .progress-right{
+      .cercle .cercle-right{
           right: 0;
       }
-      .progress .progress-right .progress-bar{
+      .cercle .cercle-right .cercle-bar{
           left: -100%;
           border-top-left-radius: 80px;
           border-bottom-left-radius: 80px;
@@ -78,7 +85,7 @@
           transform-origin: center right;
           animation: loading-1 1.8s linear forwards;
       }
-      .progress .progress-value{
+      .cercle .cercle-value{
           width: 90%;
           height: 90%;
           border-radius: 50%;
@@ -91,38 +98,38 @@
           top: 5%;
           left: 5%;
       }
-      .progress.blue .progress-bar{
+      .cercle.val_deux .cercle-bar{
           border-color: #049dff;
       }
-      .progress.blue .progress-left .progress-bar{
+      .cercle.val_deux .cercle-left .cercle-bar{
           animation: loading-2 1.5s linear forwards 1.8s;
       }
-      .progress.yellow .progress-bar{
+      /*.cercle.yellow .cercle-bar{
           border-color: #fdba04;
       }
-      .progress.yellow .progress-left .progress-bar{
+      .cercle.yellow .cercle-left .cercle-bar{
           animation: loading-3 1s linear forwards 1.8s;
       }
-      .progress.pink .progress-bar{
+      .cercle.pink .cercle-bar{
           border-color: #ed687c;
       }
-      .progress.pink .progress-left .progress-bar{
+      .cercle.pink .cercle-left .cercle-bar{
           animation: loading-4 0.4s linear forwards 1.8s;
       }
-      .progress.green .progress-bar{
+      .cercle.green .cercle-bar{
           border-color: #1abc9c;
       }
-      .progress.green .progress-left .progress-bar{
+      .cercle.green .cercle-left .cercle-bar{
           animation: loading-5 1.2s linear forwards 1.8s;
-      }
+      }*/
       @keyframes loading-1{
           0%{
               -webkit-transform: rotate(0deg);
               transform: rotate(0deg);
           }
           100%{
-              -webkit-transform: rotate(180deg);
-              transform: rotate(180deg);
+              -webkit-transform: rotate(var(--degresd));
+              transform: rotate(var(--degresd));
           }
       }
       @keyframes loading-2{
@@ -131,15 +138,24 @@
               transform: rotate(0deg);
           }
           100%{
-              -webkit-transform: rotate(144deg);
-              transform: rotate(var(--degres)deg);
+              -webkit-transform: rotate(var(--degresg));
+              transform: rotate(var(--degresg));
           }
       }
       @media only screen and (max-width: 990px){
           .progress{ margin-bottom: 20px; }
       }
 
+      .horizontale{
+        border-radius:4px;
+        width:100px;
+      }
 
+      .horizontale .horizontal_bar{
+        min-width: 2em;
+        background-color:#f63a0f !important;
+        width:33%;
+      }
     </style>
   </head>
 
@@ -147,27 +163,23 @@
 
    <div class="container">
        <div class="row">
-           <div class="col-md-3 col-sm-6">
-               <div class="progress blue">
-                   <span class="progress-left">
-                       <span class="progress-bar"></span>
+           <div class="col-md-3 col-sm-3">
+               <div class="progress cercle val_deux">
+                   <span class="progress-left cercle-left">
+                       <span class="progress-bar cercle-bar"></span>
                    </span>
-                   <span class="progress-right">
-                       <span class="progress-bar"></span>
+                   <span class="cercle-right">
+                       <span class="cercle-bar"></span>
                    </span>
-                   <div class="progress-value">90%</div>
+                   <div class="cercle-value">90%</div>
                </div>
            </div>
-           <div class="col-md-3 col-sm-6">
-               <div class="progress yellow">
-                   <span class="progress-left">
-                       <span class="progress-bar"></span>
-                   </span>
-                   <span class="progress-right">
-                       <span class="progress-bar"></span>
-                   </span>
-                   <div class="progress-value">45%</div>
-               </div>
+           <div class="col-md-3 col-sm-3">
+             <div class="progress horizontale">
+              <div class="progress-bar horizontal_bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">
+                     #value# #unite#
+              </div>
+             </div>
            </div>
        </div>
    </div>
