@@ -10,6 +10,12 @@
       </span>
       <div class="cercle-value">#state# #unite#</div>
     </div>
+    <span class="cmdName#id# #hide_name#">#name_display# </span> <strong class="state"></strong>
+    <div class="cmdStats#id# #hide_history#">
+       <div class="center-block">
+         <span title='Min' class='tooltips'>#minHistoryValue#</span>|<span title='Moyenne' class='tooltips'>#averageHistoryValue#</span>|<span title='Max' class='tooltips'>#maxHistoryValue#</span> <i class="#tendance#"></i>
+       </div>
+     </div>
     <!--Fin progress bar en cercle -->
   </div>
 
@@ -20,6 +26,12 @@
         #state# #unite#
       </div>
     </div>
+    <span class="cmdName#id# #hide_name#">#name_display# </span> <strong class="state"></strong>
+    <div class="cmdStats#id# #hide_history#">
+       <div class="center-block">
+         <span title='Min' class='tooltips'>#minHistoryValue#</span>|<span title='Moyenne' class='tooltips'>#averageHistoryValue#</span>|<span title='Max' class='tooltips'>#maxHistoryValue#</span> <i class="#tendance#"></i>
+       </div>
+     </div>
     <!--Fin progress bar horizontale -->
   </div>
 
@@ -30,6 +42,12 @@
         <div class="vertical_value">#state# #unite#</div>
       </div>
     </div>
+    <span class="cmdName#id# #hide_name#">#name_display# </span> <strong class="state"></strong>
+    <div class="cmdStats#id# #hide_history#">
+       <div class="center-block">
+         <span title='Min' class='tooltips'>#minHistoryValue#</span>|<span title='Moyenne' class='tooltips'>#averageHistoryValue#</span>|<span title='Max' class='tooltips'>#maxHistoryValue#</span> <i class="#tendance#"></i>
+       </div>
+     </div>
     <!--Fin progress bar vertical -->
   </div>
 </div>
@@ -48,7 +66,11 @@
     --couleuractualisee#id#: var(--noir);
 
   }
-
+  .cmdName#id {
+      font-size:1em;
+      font-weight:bold;
+      vertical-align:middle;
+  }
   .cercle#id# {
     width: 100px;
     height: 100px;
@@ -121,7 +143,7 @@
     height: 90%;
     border-radius: 50%;
     background: #44484b;
-    font-size: 24px;
+    font-size: 20px;
     color: #fff;
     line-height: 90px;
     text-align: center;
@@ -218,12 +240,12 @@
     var inverser = ('#inverser#' == '') ? 1 : parseInt('#inverser#');
     var type   = ('#type#'   !='#'+'type#') ?   "#type#"  :"cercle";
     var unite = ('#unite#' == '') ? 'numerique' : '#unite#';
-    var maximum = ('#maxValue#' == '') ? 100 : parseInt('#maxValue#');
+    var maximum#id# = ('#maxValue#' == '') ? 100 : parseInt('#maxValue#');
     var minimum = ('#minValue#' == '') ? 0 : parseInt('#minValue#');
     var err = 0;
-
     if (unite == 'numerique') {
-      valeur = ((valeur * 100) / maximum);
+      valeur = ((valeur * 100) / maximum#id#);
+      maximum#id# = ((maximum#id#*100)/maximum#id#);
     } else if (unite == "%" && (valeur < 0 || valeur > 100)) {
       valeur = 0;
       cmd.find('.cercle-value').empty().append('Err');
@@ -238,7 +260,7 @@
       cmd.find('.content-xs#id#').hide();
 
       if (unite == "numerique" || unite == "%") {
-        if (valeur >= minimum && valeur <= maximum) {
+        if (valeur >= minimum && valeur <= maximum#id#) {
           if (valeur > 50) {
             document.documentElement.style.setProperty('--degresd#id#', '180deg');
             document.documentElement.style.setProperty('--degresg#id#', ((valeur - 50) * 3.6) + 'deg');
@@ -253,7 +275,7 @@
     } else if (type == "horizontal" && err == 0) {
       cmd.find('.content-lg#id#').hide();
       cmd.find('.content-xs#id#').hide();
-      if (valeur >= minimum && valeur <= maximum) {
+      if (valeur >= minimum && valeur <= maximum#id#) {
         cmd.find('.horizontal_bar').attr('style', 'width: ' + valeur + '%;');
       }
       cmd.find('.horizontal_bar').empty().append(valeur + ' #unite#');
@@ -261,21 +283,21 @@
     } else if (type == "vertical" && err == 0) {
       cmd.find('.content-lg#id#').hide();
       cmd.find('.content-sm#id#').hide();
-      if (valeur >= minimum && valeur <= maximum) {
+      if (valeur >= minimum && valeur <= maximum#id#) {
         cmd.find('.vertical_bar#id#').attr('style', 'height: ' + valeur + '%;');
       }
       cmd.find('.vertical_value').empty().append(valeur + ' #unite#');
     }
 
-    if(valeur>=((maximum/5)*0) && valeur <(maximum/5)) {
+    if(valeur>=((maximum#id#/5)*0) && valeur <(maximum#id#/5)) {
       inverser ? document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--vert') : document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--rouge');
-    }else if(valeur>=(maximum/5) && valeur <((maximum/5)*2)) {
+    }else if(valeur>=(maximum#id#/5) && valeur <((maximum#id#/5)*2)) {
       inverser ? document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--jaune_clair') : document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--orange');
-    }else if(valeur>=((maximum/5)*2) && valeur <((maximum/5)*3)) {
+    }else if(valeur>=((maximum#id#/5)*2) && valeur <((maximum#id#/5)*3)) {
       inverser ? document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--jaune') : document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--jaune');
-    }else if(valeur>=((maximum/5)*3) && valeur <((maximum/5)*4)) {
+    }else if(valeur>=((maximum#id#/5)*3) && valeur <((maximum#id#/5)*4)) {
       inverser ? document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--orange') : document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--jaune_clair');
-    }else if(valeur>=((maximum/5)*4) && valeur <= maximum) {
+    }else if(valeur>=((maximum#id#/5)*4) && valeur <= maximum#id#) {
       inverser ? document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--rouge') : document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--vert');
     }
 
