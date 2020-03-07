@@ -1,21 +1,21 @@
 <div class="cmd cmd-widget #history#" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
-  <div class="content-lg">
+  <div class="content-lg#id#">
     <!-- Progress bar en cercle-->
-    <div class="progress cercle val_deux">
-      <span class="progress-left cercle-left">
-        <span class="progress-bar cercle-bar"></span>
+    <div class="progress cercle#id# val_deux#id#">
+      <span class="progress-left cercle-left#id#">
+        <span class="progress-bar cercle-bar#id#"></span>
       </span>
-      <span class="cercle-right">
-        <span class="cercle-bar"></span>
+      <span class="cercle-right#id#">
+        <span class="cercle-bar#id#"></span>
       </span>
       <div class="cercle-value">#state# #unite#</div>
     </div>
     <!--Fin progress bar en cercle -->
   </div>
 
-  <div class="content-sm">
+  <div class="content-sm#id#">
     <!--Progress bar horizontal -->
-    <div class="progress horizontale">
+    <div class="progress horizontale#id#">
       <div class="progress-bar horizontal_bar" role="progressbar" aria-valuenow="2" aria-valuemin="0" aria-valuemax="100">
         #state# #unite#
       </div>
@@ -23,10 +23,10 @@
     <!--Fin progress bar horizontale -->
   </div>
 
-  <div class="content-xs">
+  <div class="content-xs#id#">
     <!--Progress bar vertical -->
     <div class="progress vertical">
-      <div class="progress-bar vertical_bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
+      <div class="progress-bar vertical_bar#id#" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">
         <div class="vertical_value">#state# #unite#</div>
       </div>
     </div>
@@ -43,17 +43,13 @@
     --vert: #86e01e;
     --noir: #000000;
     --blanc: #ffffff;
-    --degresd: 0deg;
-    --degresg: 0deg;
+    --degresd#id#: 0deg;
+    --degresg#id#: 0deg;
     --couleuractualisee#id#: var(--noir);
-    /* Dans le CSS il existe 2 demi cercle, le premier sur la partie droite va de 0 a 180°
-          Le second sur la partie gauche vas de 180 a 360
-          Pour le calcul il faudra faire pourcentage * 3,6 - 180 si supérieur a 50%
 
-        calcul de degres : pourcentage * 3,6 */
   }
 
-  .cercle {
+  .cercle#id# {
     width: 100px;
     height: 100px;
     line-height: 100px;
@@ -63,7 +59,7 @@
     position: relative;
   }
 
-  .cercle:after {
+  .cercle#id#:after {
     content: "";
     width: 100%;
     height: 100%;
@@ -74,7 +70,7 @@
     left: 0;
   }
 
-  .cercle>span {
+  .cercle#id#>span {
     width: 50%;
     height: 100%;
     overflow: hidden;
@@ -83,11 +79,11 @@
     z-index: 1;
   }
 
-  .cercle .cercle-left {
+  .cercle#id# .cercle-left#id# {
     left: 0;
   }
 
-  .cercle .cercle-bar {
+  .cercle#id# .cercle-bar#id# {
     width: 100%;
     height: 100%;
     background: none;
@@ -97,7 +93,7 @@
     top: 0;
   }
 
-  .cercle .cercle-left .cercle-bar {
+  .cercle#id# .cercle-left#id# .cercle-bar#id# {
     left: 100%;
     border-top-right-radius: 80px;
     border-bottom-right-radius: 80px;
@@ -106,21 +102,21 @@
     transform-origin: center left;
   }
 
-  .cercle .cercle-right {
+  .cercle#id# .cercle-right#id# {
     right: 0;
   }
 
-  .cercle .cercle-right .cercle-bar {
+  .cercle#id# .cercle-right#id# .cercle-bar#id# {
     left: -100%;
     border-top-left-radius: 80px;
     border-bottom-left-radius: 80px;
     border-right: 0;
     -webkit-transform-origin: center right;
     transform-origin: center right;
-    animation: loading-1 1.8s linear forwards;
+    animation: loading-1#id# 1.8s linear forwards;
   }
 
-  .cercle .cercle-value {
+  .cercle#id# .cercle-value {
     width: 90%;
     height: 90%;
     border-radius: 50%;
@@ -134,53 +130,52 @@
     left: 5%;
   }
 
-  .cercle.val_deux .cercle-bar {
+  .cercle#id#.val_deux#id# .cercle-bar#id# {
     border-color: var(--couleuractualisee#id#);
   }
 
-  .cercle.val_deux .cercle-left .cercle-bar {
-    animation: loading-2 1.5s linear forwards 1.8s;
+  .cercle#id#.val_deux#id# .cercle-left#id# .cercle-bar#id# {
+    animation: loading-2#id# 1.5s linear forwards 1.8s;
   }
 
-  @keyframes loading-1 {
+  @keyframes loading-1#id# {
     0% {
       -webkit-transform: rotate(0deg);
       transform: rotate(0deg);
     }
 
     100% {
-      -webkit-transform: rotate(var(--degresd));
-      transform: rotate(var(--degresd));
+      -webkit-transform: rotate(var(--degresd#id#));
+      transform: rotate(var(--degresd#id#));
     }
   }
 
-  @keyframes loading-2 {
+  @keyframes loading-2#id# {
     0% {
       -webkit-transform: rotate(0deg);
       transform: rotate(0deg);
     }
 
     100% {
-      -webkit-transform: rotate(var(--degresg));
-      transform: rotate(var(--degresg));
+      -webkit-transform: rotate(var(--degresg#id#));
+      transform: rotate(var(--degresg#id#));
     }
   }
 
   @media only screen and (max-width: 990px) {
-    .progress {
+    .progress#id# {
       margin-bottom: 20px;
     }
   }
 
-  .horizontale {
+  .horizontale#id# {
     border-radius: 4px;
     width: 100px;
 
     margin: 0 auto;
-    /* a supprimer si problème d'affichage */
   }
 
-  .horizontale .horizontal_bar {
+  .horizontale#id# .horizontal_bar {
     min-width: 2em;
     background-color: var(--couleuractualisee#id#) !important;
     width: 33%;
@@ -193,11 +188,10 @@
     border-radius: 6px !important;
     transform: rotate(180deg);
     margin: 0 auto;
-    /* a supprimer si problème d'affichage */
 
   }
 
-  .vertical_bar {
+  .vertical_bar#id# {
     min-height: 2em;
     width: 100%;
     height: 0;
@@ -222,7 +216,7 @@
 
     var valeur = _options.display_value;
     var inverser = ('#inverser#' == '') ? 1 : parseInt('#inverser#');
-    var type = ('#type#' == '') ? 'cercle' : '#type#';
+    var type   = ('#type#'   !='#'+'type#') ?   "#type#"  :"cercle";
     var unite = ('#unite#' == '') ? 'numerique' : '#unite#';
     var maximum = ('#maxValue#' == '') ? 100 : parseInt('#maxValue#');
     var minimum = ('#minValue#' == '') ? 0 : parseInt('#minValue#');
@@ -240,35 +234,35 @@
     }
 
     if (type == 'cercle' && err == 0) {
-      cmd.find('.content-sm').hide();
-      cmd.find('.content-xs').hide();
+      cmd.find('.content-sm#id#').hide();
+      cmd.find('.content-xs#id#').hide();
 
       if (unite == "numerique" || unite == "%") {
         if (valeur >= minimum && valeur <= maximum) {
           if (valeur > 50) {
-            document.documentElement.style.setProperty('--degresd', '180deg');
-            document.documentElement.style.setProperty('--degresg', ((valeur - 50) * 3.6) + 'deg');
+            document.documentElement.style.setProperty('--degresd#id#', '180deg');
+            document.documentElement.style.setProperty('--degresg#id#', ((valeur - 50) * 3.6) + 'deg');
           } else {
-            document.documentElement.style.setProperty('--degresd', (valeur * 3.6) + 'deg');
-            document.documentElement.style.setProperty('--degresg', '0deg');
+            document.documentElement.style.setProperty('--degresd#id#', (valeur * 3.6) + 'deg');
+            document.documentElement.style.setProperty('--degresg#id#', '0deg');
           }
         }
       }
       cmd.find('.cercle-value').empty().append(valeur + ' #unite#');
 
     } else if (type == "horizontal" && err == 0) {
-      cmd.find('.content-lg').hide();
-      cmd.find('.content-xs').hide();
+      cmd.find('.content-lg#id#').hide();
+      cmd.find('.content-xs#id#').hide();
       if (valeur >= minimum && valeur <= maximum) {
         cmd.find('.horizontal_bar').attr('style', 'width: ' + valeur + '%;');
       }
       cmd.find('.horizontal_bar').empty().append(valeur + ' #unite#');
 
     } else if (type == "vertical" && err == 0) {
-      cmd.find('.content-lg').hide();
-      cmd.find('.content-sm').hide();
+      cmd.find('.content-lg#id#').hide();
+      cmd.find('.content-sm#id#').hide();
       if (valeur >= minimum && valeur <= maximum) {
-        cmd.find('.vertical_bar').attr('style', 'height: ' + valeur + '%;');
+        cmd.find('.vertical_bar#id#').attr('style', 'height: ' + valeur + '%;');
       }
       cmd.find('.vertical_value').empty().append(valeur + ' #unite#');
     }
