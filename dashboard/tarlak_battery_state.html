@@ -263,7 +263,7 @@
               	cmd.find('.icone').css('border','2px solid var(--vert)');
               	cmd.find('.NomCmd').addClass('vert txt_blanc');
             }
-
+						cmd.find('.unite').empty().append(valeur + ' #unite#');
 			$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
 		}
 		jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
