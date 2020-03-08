@@ -187,7 +187,7 @@
   		}
 		/* class permettant d'afficher la jauge de niveau de batterie */
 		.battery-level {
-			background: #30b455;
+			/*background: var(--vert);*/
 			position: absolute;
 			bottom: 0px;
 			left: 0;
@@ -195,6 +195,9 @@
   		}
 
   		/* permet le changement de la couleur du niveau de la jauge par defaut orange*/
+		.battery-level.okbat{
+					background-color: var(--vert);
+		}
 		.battery-level.warn {
     			background-color: var(--warn);
 			}
@@ -265,16 +268,23 @@
             }*/
 						if (valeur>=0 && valeur <5){
 							cmd.find('.icone').css('border','2px solid var(--alertniveau)');
+							cmd.find('.battery-level').removeClass("warn alertniv okbat");
 							cmd.find('.battery-level').addClass('alertniv');
-							cmd.find(".NomCmd").addClass('alertniveau txt_blanc');
+							cmd.find('.NomCmd').removeClass("warn vert alertniveau alertniv txt_blanc txt noir");
+							cmd.find('.NomCmd').addClass('alertniveau txt_blanc');
 						}
 						else if (valeur>=5 && valeur <15) {
 							cmd.find('.icone').css('border','2px solid var(--warn)');
+							cmd.find('.battery-level').removeClass("warn alertniv okbat");
 							cmd.find('.battery-level').addClass('warn');
+							cmd.find('.NomCmd').removeClass("warn vert alertniveau alertniv txt_blanc txt noir");
 							cmd.find('.NomCmd').addClass('warn txt_blanc');
 						}
-						else if (valeur>=60 && valeur <=100) {
+						else if (valeur>=15 && valeur <=100) {
 							cmd.find('.icone').css('border','2px solid var(--vert)');
+							cmd.find('.battery-level').removeClass("warn alertniv okbat");
+							cmd.find('.battery-level').addClass('okbat');
+							cmd.find('.NomCmd').removeClass("warn vert alertniveau alertniv txt_blanc txt noir");
 							cmd.find('.NomCmd').addClass('vert txt_blanc');
 						}
 						cmd.find('.unite').empty().append(valeur + ' #unite#');
