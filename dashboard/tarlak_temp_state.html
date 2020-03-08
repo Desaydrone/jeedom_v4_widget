@@ -1,13 +1,12 @@
 <div style="margin:0px; padding:0px; width:85px; height:85px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#"
 	data-cmd_uid="#uid#">
 	<div class="icone#uid# box_haut" style="z-index:1">
-		<div class="value-entier#id#"></div>
-		<div class="unite#id#">#unite#</div>
+		<div class="value-entier#id#"></div><div class="unite#id#">#unite#</div>
 		<div class="value-decimal#id#"></div>
+	<!--<div class="unite#id#">#unite#</div>-->
 	</div>
-
 	<div style="z-index:2;">
-		<div class="NomCmd#id# box_bas">#name_display#</div>
+		<div class="NomCmd#id# box_bas#id#">#name_display#</div>
 	</div>
 	<style>
 		/* Définition de variable CSS contenant les valeurs des couleurs) */
@@ -28,10 +27,11 @@
 
 		/* class css permetant de faire une box arrondie sur les angles supérieur gauche et droit */
 		div.box_haut {
+			display:flex
 			margin: 0px;
 			padding: 0px;
 			width: 85px;
-			height: 65px;
+			height: 70px;
 			border-radius: 8px 8px 0px 0px;
 			-moz-border-radius: 8px 8px 0px 0px;
 			-webkit-border-radius: 8px 8px 0px 0px;
@@ -39,10 +39,11 @@
 		}
 
 		[data-theme="core2019_Dark"] .box_haut {
+			display:flex
 			margin: 0px;
 			padding: 0px;
 			width: 85px;
-			height: 65px;
+			height: 70px;
 			border-radius: 8px 8px 0px 0px;
 			-moz-border-radius: 8px 8px 0px 0px;
 			-webkit-border-radius: 8px 8px 0px 0px;
@@ -50,7 +51,7 @@
 		}
 
 		/* class css permetant de faire une box arrondie sur les angles inférieur gauche et droit */
-		div.box_bas {
+		div.box_bas#id# {
 			padding: 0px;
 			margin: 0px;
 			width: 85px;
@@ -129,53 +130,62 @@
 		/******  Fin de déclaration des class de couleur ******/
 
 		div.value-entier#id# {
-			     display: inline-block;
-			font-size: 38px;
+			margin: 24px 0 0 0;
+			font-size: 34px;
 			font-weight: bold;
-			position: absolute;
-			top: 23px;
-			right: 14px;
-			width: 85px;
-			height: 65px;
+			width: 55px;
+			height: 30px;
 			z-index: 2;
 			letter-spacing: 0px;
+			text-align:right;
 		}
 
 		div.value-decimal#id# {
-			font-size: 20px;
+			margin: 32px 0 0 0;
+			font-size: 12px;
 			font-weight: bold;
-			position: absolute;
-			top: 30px;
-			right: -22px;
-			width: 85px;
-			height: 65px;
-			z-index: 2;
+			height: 25px;
+			z-index: 5;
 			letter-spacing: 0px;
-
 		}
 
 		div.unite#id# {
-			font-size: 13px;
+			margin:8px 0 0 50px;
+			font-size: 12px;
 			font-weight: bold;
 			position: absolute;
-			top: 50px;
-			width: 85px;
-			height: 65px;
-			z-index: 2;
+			width: 25px;
+			height: 10px;
+			z-index: 8;
 			letter-spacing: 0px;
+			text-align:left;
 
 		}
 
 		div.NomCmd#id# {
+			padding-top:2px;
 			font-size: 1em;
 			font-weight: bold;
 			position: absolute;
 			vertical-align: middle;
-			/*top: 82%;*/
+			top: 82%;
 			left: 0%;
-			width:85px;
-      height:20px;
 			z-index: 2;
+			width:85px;
+			text-align: center;
+		}
+
+		[data-theme="core2019_Dark"] .NomCmd#id# {
+			padding-top:2px;
+			font-size: 1em;
+			font-weight: bold;
+			position: absolute;
+			vertical-align: middle;
+			top: 82%;
+			left: 0%;
+			z-index: 2;
+			width:85px;
+			text-align: center;
 		}
 	</style>
 
@@ -217,7 +227,7 @@
 				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').text("." + decimal);
 				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').attr('style', 'right:-30px;');
 			} else if (valeur >= 0 && valeur < 10) {
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').text(entier);
+				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').text('0'+entier);
 				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').attr('style', 'right:13px;');
 				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').text("." + decimal);
 				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').attr('style', 'right:-10px;');
