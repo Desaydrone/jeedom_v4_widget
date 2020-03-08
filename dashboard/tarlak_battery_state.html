@@ -236,9 +236,9 @@
 	<script>
 		jeedom.cmd.update['#id#'] = function(_options){
 			var cmd = $('.cmd[data-cmd_id=#id#]');
-
             // Récupération des valeurs
            	var valeur = _options.display_value;
+
             var etatbatterie = _options.alertLevel;
           	if (valeur <0)
 				        valeur=0;
@@ -248,7 +248,7 @@
 
           // Modification de la couleur du texte de la batterie
           	cmd.find('.battery-level').attr('style', 'height:'+valeur+'%;');
-          	if (etatbatterie == "batterydanger") {
+          	/*if (etatbatterie == "batterydanger") {
                 // Modifiction de la couleur du cadre de la box supérieur en fonction de la batterie
               	cmd.find('.icone').css('border','2px solid var(--alertniveau)');
               	cmd.find('.battery-level').addClass('alertniv');
@@ -262,7 +262,22 @@
             else if (etatbatterie=="none") {
               	cmd.find('.icone').css('border','2px solid var(--vert)');
               	cmd.find('.NomCmd').addClass('vert txt_blanc');
-            }
+            }*/
+						valeur=15;
+						if (valeur>=0 && valeur <5){
+							cmd.find('.icone').css('border','2px solid var(--alertniveau)');
+							cmd.find('.battery-level').addClass('alertniv');
+							cmd.find(".NomCmd").addClass('alertniveau txt_blanc');
+						}
+						else if (valeur>=5 && valeur <15) {
+							cmd.find('.icone').css('border','2px solid var(--warn)');
+							cmd.find('.battery-level').addClass('warn');
+							cmd.find('.NomCmd').addClass('warn txt_blanc');
+						}
+						else if (valeur>=60 && valeur <=100) {
+							cmd.find('.icone').css('border','2px solid var(--vert)');
+							cmd.find('.NomCmd').addClass('vert txt_blanc');
+						}
 						cmd.find('.unite').empty().append(valeur + ' #unite#');
 			$('.cmd[data-cmd_id=#id#]').attr('title','Valeur du '+_options.valueDate+', collectée le '+_options.collectDate);
 		}
