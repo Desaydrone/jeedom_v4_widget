@@ -9,7 +9,8 @@
             </div>
           </div>
         </div>
-      </div>    </div>
+      </div>
+    </div>
     <!--<div class="unite">#state# #unite#</div>-->
   </div>
   <div style="z-index:2;">
@@ -24,12 +25,12 @@
 
   :root {
     --warn: #efaf13;
-    --alertniveau: #da3037;
+    --alert: #da3037;
     --vert: #30b455;
     --noir: #000000;
     --gris: #838383;
     --blanc: #ffffff;
-    --couleuractualisee#id#: var(--vert);
+    --couleuractualisee#id#: var(--alert);
   }
 
   /* Definition des différents couleurs du niveau de batterie et de text */
@@ -55,8 +56,7 @@
     border-radius: 8px 8px 0px 0px;
     -moz-border-radius: 8px 8px 0px 0px;
     -webkit-border-radius: 8px 8px 0px 0px;
-    background-color: var(--blanc) !important;
-    border:1px solid #F00;
+    background-color: transparent !important;
 
   }
 
@@ -139,36 +139,39 @@
     text-align: center;
   }
 
-.Arc{
-	border:4px solid transparent;
-	border-radius:100%;
-	/*margin:0 auto;*/
-}
-.Out{
-	width:46px;
-	height:32px;
-	margin:4px auto;
-	border-top-color:#A1A1A1;
-}
-.Middle{
-	width:30px;
-	height:22px;
-	margin:4px auto;
-	border-top-color:#A1A1A1;
+  .Arc {
+    border: 4px solid transparent;
+    border-radius: 100%;
+    /*margin:0 auto;*/
+  }
 
-}
-.In{
-	width:16px;
-	height:12px;
-	margin:4px auto;
-	border-top-color:#A1A1A1;
+  .Out {
+    width: 46px;
+    height: 32px;
+    margin: 4px auto;
+    border-top-color: var(--couleuractualisee#id#)
+  }
 
-}
-.Dot{
-	width:4px;
-	height:4px;
-	margin:4px auto;
-	background:#A1A1A1;
-}
+  .Middle {
+    width: 30px;
+    height: 22px;
+    margin: 4px auto;
+    border-top-color: var(--couleuractualisee#id#);
 
+  }
+
+  .In {
+    width: 16px;
+    height: 12px;
+    margin: 4px auto;
+    border-top-color: var(--couleuractualisee#id#);
+
+  }
+
+  .Dot {
+    width: 4px;
+    height: 4px;
+    margin: 4px auto;
+    background: var(--couleuractualisee#id#);
+  }
 </style>
