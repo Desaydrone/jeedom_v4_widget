@@ -1,0 +1,174 @@
+<div style="margin:0px; padding:0px; width:85px; height:85px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#"
+  data-cmd_uid="#uid#">
+  <div class="icone box_haut" style="z-index:1">
+    <div class="value-entier">
+      <div class="Arc Out">
+        <div class="Arc Middle">
+          <div class="Arc In">
+            <div class="Arc Dot">
+            </div>
+          </div>
+        </div>
+      </div>    </div>
+    <!--<div class="unite">#state# #unite#</div>-->
+  </div>
+  <div style="z-index:2;">
+    <div class="NomCmd box_bas">#name#</div>
+  </div>
+
+</div>
+
+<style>
+  /* Définition de variable CSS contenant les valeurs des couleurs)
+  			Vous pouvez modifer la valeur des couleurs sans en mofier le nom */
+
+  :root {
+    --warn: #efaf13;
+    --alertniveau: #da3037;
+    --vert: #30b455;
+    --noir: #000000;
+    --gris: #838383;
+    --blanc: #ffffff;
+    --couleuractualisee#id#: var(--vert);
+  }
+
+  /* Definition des différents couleurs du niveau de batterie et de text */
+  .niveau_intensite {
+    background: var(--couleuractualisee#id#);
+  }
+
+  .txt_noir {
+    color: var(--noir);
+  }
+
+  .txt_blanc {
+    color: var(--blanc);
+  }
+
+  /* class css permetant de faire une box arrondie sur les angles supérieur gauche et droit */
+  div.box_haut {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    width: 85px;
+    height: 70px;
+    border-radius: 8px 8px 0px 0px;
+    -moz-border-radius: 8px 8px 0px 0px;
+    -webkit-border-radius: 8px 8px 0px 0px;
+    background-color: var(--blanc) !important;
+    border:1px solid #F00;
+
+  }
+
+  [data-theme="core2019_Dark"] .box_haut {
+    /*display: flex margin: 0px;*/
+    padding: 0px;
+    width: 85px;
+    height: 70px;
+    border-radius: 8px 8px 0px 0px;
+    -moz-border-radius: 8px 8px 0px 0px;
+    -webkit-border-radius: 8px 8px 0px 0px;
+    background-color: transparent !important;
+  }
+
+  /* class css permetant de faire une box arrondie sur les angles inférieur gauche et droit */
+  div.box_bas {
+    padding: 0px;
+    margin: 0px;
+    width: 86px;
+    height: 25px;
+    border-radius: 0px 0px 8px 8px;
+    -moz-border-radius: 0px 0px 8px 8px;
+    -webkit-border-radius: 0px 0px 8px 8px;
+  }
+
+  [data-theme="core2019_Dark"] .box_bas {
+    padding: 0px;
+    margin: 0px;
+    width: 86px;
+    height: 25px;
+    border-radius: 0px 0px 8px 8px;
+    -moz-border-radius: 0px 0px 8px 8px;
+    -webkit-border-radius: 0px 0px 8px 8px;
+  }
+
+  div.value-entier {
+    margin: auto;
+    font-size: 38px;
+    font-weight: bold;
+    height: 60px;
+    z-index: 2;
+    letter-spacing: 0px;
+  }
+
+  div.unite {
+    font-size: 13px;
+    font-weight: bold;
+    position: absolute;
+    top: 50px;
+    width: 85px;
+    z-index: 2;
+    letter-spacing: 0px;
+    color: var(--gris);
+    text-align: center;
+  }
+
+  div.NomCmd {
+    padding-top: 2px;
+    font-size: 1em;
+    font-weight: bold;
+    position: absolute;
+    vertical-align: middle;
+    top: 82%;
+    left: 0%;
+    z-index: 2;
+    width: 85px;
+    text-align: center;
+  }
+
+  [data-theme="core2019_Dark"] .NomCmd {
+    padding-top: 2px;
+    font-size: 1em;
+    font-weight: bold;
+    position: absolute;
+    vertical-align: middle;
+    top: 82%;
+    left: 0%;
+    z-index: 2;
+    width: 85px;
+    text-align: center;
+  }
+
+.Arc{
+	border:4px solid transparent;
+	border-radius:100%;
+	/*margin:0 auto;*/
+}
+.Out{
+	width:46px;
+	height:32px;
+	margin:4px auto;
+	border-top-color:#A1A1A1;
+}
+.Middle{
+	width:30px;
+	height:22px;
+	margin:4px auto;
+	border-top-color:#A1A1A1;
+
+}
+.In{
+	width:16px;
+	height:12px;
+	margin:4px auto;
+	border-top-color:#A1A1A1;
+
+}
+.Dot{
+	width:4px;
+	height:4px;
+	margin:4px auto;
+	background:#A1A1A1;
+}
+
+</style>
