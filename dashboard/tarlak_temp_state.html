@@ -184,15 +184,14 @@
 
 			// Récupération des valeurs
 			var valeur = _options.display_value;
-valeur=23.45
 			// Séparation des entier et décimal
 			var entier = Math.trunc(valeur);
-			//var decimal = Math.abs(Math.round(valeur * 10 - entier * 10));
+
+			//Simplification merci @jpty
 			var valeur = parseFloat(_options.display_value).toFixed(2)
 			var entier = valeur.split('.')[0]
 			var decimal = valeur.split('.')[1]
-			//var decimal =(valeur-entier).toFixed(2);
-			//decimal = decimal.substring(decimal.indexOf(".")+1, decimal .length)
+
 
 
 			// Regle d'affichage des decimaux suivant le valeur a afficher
