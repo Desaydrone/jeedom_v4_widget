@@ -1,13 +1,13 @@
 <div style="margin:0px; padding:0px; width:85px; height:85px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#"
 	data-cmd_uid="#uid#">
 	<div class="icone#uid# box_haut" style="z-index:1">
+		<div class="value-entier#id#"></div>
+		<div class="unite#id#">#unite#</div>
+		<div class="value-decimal#id#"></div>
 	</div>
 
 	<div style="z-index:2;">
 		<div class="NomCmd#id# box_bas">#name_display#</div>
-		<div class="unite#id#">#unite#</div>
-		<div class="value-entier#id#"></div>
-		<div class="value-decimal#id#"></div>
 	</div>
 	<style>
 		/* Définition de variable CSS contenant les valeurs des couleurs) */
@@ -22,7 +22,7 @@
 			--vert_fonce: #829f25;
 			--violet: #dc00ff;
 			--noir: #000000;
-			--gris: #838383;
+			--gris: #787878;
 			--blanc: #ffffff;
 		}
 
@@ -31,18 +31,18 @@
 			margin: 0px;
 			padding: 0px;
 			width: 85px;
-			height: 70px;
+			height: 65px;
 			border-radius: 8px 8px 0px 0px;
 			-moz-border-radius: 8px 8px 0px 0px;
 			-webkit-border-radius: 8px 8px 0px 0px;
-			background-color: var(--noir) !important;
+			background-color: var(--gris) !important;
 		}
 
 		[data-theme="core2019_Dark"] .box_haut {
 			margin: 0px;
 			padding: 0px;
 			width: 85px;
-			height: 70px;
+			height: 65px;
 			border-radius: 8px 8px 0px 0px;
 			-moz-border-radius: 8px 8px 0px 0px;
 			-webkit-border-radius: 8px 8px 0px 0px;
@@ -129,13 +129,14 @@
 		/******  Fin de déclaration des class de couleur ******/
 
 		div.value-entier#id# {
+			     display: inline-block;
 			font-size: 38px;
 			font-weight: bold;
 			position: absolute;
 			top: 23px;
 			right: 10px;
 			width: 85px;
-			height: 85px;
+			height: 65px;
 			z-index: 2;
 			letter-spacing: 0px;
 		}
@@ -147,9 +148,10 @@
 			top: 26px;
 			right: -22px;
 			width: 85px;
-			height: 85px;
+			height: 65px;
 			z-index: 2;
 			letter-spacing: 0px;
+
 		}
 
 		div.unite#id# {
@@ -158,9 +160,10 @@
 			position: absolute;
 			top: 50px;
 			width: 85px;
-			height: 85px;
+			height: 65px;
 			z-index: 2;
 			letter-spacing: 0px;
+
 		}
 
 		div.NomCmd#id# {
@@ -168,10 +171,10 @@
 			font-weight: bold;
 			position: absolute;
 			vertical-align: middle;
-			top: 82%;
+			/*top: 82%;*/
 			left: 0%;
-			/*width:85px;
-            height:85px;*/
+			width:85px;
+      height:20px;
 			z-index: 2;
 		}
 	</style>
@@ -184,7 +187,10 @@
 
 			// Séparation des entier et décimal
 			var entier = Math.trunc(valeur);
-			var decimal = Math.abs(Math.round(valeur * 10 - entier * 10));
+			//var decimal = Math.abs(Math.round(valeur * 10 - entier * 10));
+			var decimal =(valeur-entier).toFixed(2);
+			decimal = decimal.substring(decimal.indexOf(".")+1, decimal .length)
+
 
 			// Regle d'affichage des decimaux suivant le valeur a afficher
 			if (entier == 1) {
