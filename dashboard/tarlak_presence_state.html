@@ -1,4 +1,4 @@
-<div style="margin:0px; padding:0px; width:85px; height:85px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#">
+<div style="margin:0px 0px 16px 0px; padding:0px; width:85px; height:85px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#">
 	<div class="box_haut_presence" style="z-index:1"></div>
 	<div style="z-index:2;">
 		<div class="NomCmd box_bas_presence">#name_display#</div>
@@ -17,15 +17,15 @@
           	--gris: #838383;
           	--blanc: #ffffff;
 		}
-  
+
   		.absent{
           	color: var(--absent);
   		}
-  
+
    		.present{
         	color : var(--present);
   		}
-  
+
     	.txt_noir{
           	color: var(--noir);
 		}
@@ -41,7 +41,7 @@
           	height : 70px;
 			border-radius: 8px 8px 0px 0px;
 			-moz-border-radius: 8px 8px 0px 0px;
-			-webkit-border-radius: 8px 8px 0px 0px;  
+			-webkit-border-radius: 8px 8px 0px 0px;
           	background-color:var(--blanc)!important;
   		}
 
@@ -52,11 +52,11 @@
           	height : 70px;
 			border-radius: 8px 8px 0px 0px;
 			-moz-border-radius: 8px 8px 0px 0px;
-			-webkit-border-radius: 8px 8px 0px 0px;  
+			-webkit-border-radius: 8px 8px 0px 0px;
           	background-color: transparent!important;
 
   		}
-  
+
   		/* class css permetant de faire une box arrondie sur les angles inférieur gauche et droit */
     	.box_bas_presence
     	{
@@ -67,17 +67,29 @@
 			border-radius: 0px 0px 8px 8px;
           	-moz-border-radius: 0px 0px 8px 8px;
 			-webkit-border-radius: 0px 0px 8px 8px;
+			margin-bottom:15px;
 		}
-  
+
+[data-theme="core2019_Dark"] .box_bas_presence
+    	{
+          	padding:0px;
+			width : 85px;
+          	height : 25px;
+			border-radius: 0px 0px 8px 8px;
+          	-moz-border-radius: 0px 0px 8px 8px;
+			-webkit-border-radius: 0px 0px 8px 8px;
+			margin-bottom:15px;
+		}
+
       	.user_presence{
             position:absolute;
           	top:5px;
           	margin-top: 5px;
 			height : 60px;
           	width : 85px;
-          	vertical-align:middle; 
+          	vertical-align:middle;
           	z-index:2;
-          	
+
   		}
  		.face_circle_presence {
 			height : 24px;
@@ -97,17 +109,17 @@
 
       	.NomCmd {
           	font-size:1em;
-          	font-weight:bold; 
+          	font-weight:bold;
             position:absolute;
             vertical-align:middle;
-          	top:82%; 
-       		left:0%; 
-            z-index:2;    
-	  	}  
+          	top:82%;
+       		left:0%;
+            z-index:2;
+	  	}
 </style>
 
 <script>
-		jeedom.cmd.update['#id#'] = function(_options){ 
+		jeedom.cmd.update['#id#'] = function(_options){
 		var cmd = $('.cmd[data-cmd_id=#id#]');
 
         // Récupération des valeurs
@@ -129,6 +141,5 @@
 	}
 	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
 
-  
+
 </script>
-  
