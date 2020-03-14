@@ -1,29 +1,44 @@
-<div style="margin:0px; padding:0px; width:85px; height:85px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#"
-  data-cmd_uid="#uid#">
-  <div class="icone box_haut" style="z-index:1">
-    <div class="value-entier">
-      <div class="Arc Out">
-        <div class="Arc Middle">
-          <div class="Arc In">
-            <div class="Arc Dot">
+<div class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#" style="margin:10px;">
+  <div class="box_full" style="height:100px; width:100px; overflow:hidden;">
+    <div class="box_top" style="height:80px;display:flex;width:85px;">
+      <div style="margin:auto;">
+
+
+        <div class="Arc Out">
+          <div class="Arc Middle">
+            <div class="Arc In">
+              <div class="Arc Dot">
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-    <!--<div class="unite">#state# #unite#</div>-->
-  </div>
-  <div style="z-index:2;">
-    <div class="NomCmd box_bas">#name#</div>
-  </div>
 
+
+      </div>
+
+    </div>
+    <div class="box_bottom" style="background-color:cyan;display:flex;">
+      <div class="NomCmd #hide_name#" style="margin:auto; ">nom#id#</div>
+    </div>
+  </div>
+  <div class="cmdStats#id# #hide_history#" style="height:20px;display:flex;width:85px;padding-top:3px;">
+    <div class="center-block">
+      <span title='Min' class='tooltips'>#minHistoryValue#</span>|<span title='Moyenne' class='tooltips'>#averageHistoryValue#</span>|<span title='Max' class='tooltips'>#maxHistoryValue#</span> <i class="#tendance#"></i>
+    </div>
+  </div>
 </div>
+
+
+
+
+
+
 
 <style>
   /* Définition de variable CSS contenant les valeurs des couleurs)
   			Vous pouvez modifer la valeur des couleurs sans en mofier le nom */
 
-  :root {
+   :root {
     --warn: #efaf13;
     --alert: #da3037;
     --vert: #30b455;
@@ -31,6 +46,39 @@
     --gris: #838383;
     --blanc: #ffffff;
     --couleuractualisee#id#: var(--alert);
+  }
+
+   .box_full {
+    border-radius: 10px;
+    border: 3px solid cyan;
+    background: #AAAAAA;
+  }
+
+  [data-theme="core2019_Dark"] .box_full {
+    background: transparent !important;
+  }
+
+  .box_top {}
+
+  .value {
+    font-size: 38px;
+  }
+
+  .box_bottom {
+    line-height: 20px;
+  }
+
+  .NomCmd {
+    text-align: center;
+    mix-blend-mode: difference;
+    color: white;
+  }
+
+  .unite {
+    font-size: 12px;
+    position: relative;
+    bottom: 25px;
+    color: cyan;
   }
 
   /* Definition des différents couleurs du niveau de batterie et de text */
@@ -46,98 +94,6 @@
     color: var(--blanc);
   }
 
-  /* class css permetant de faire une box arrondie sur les angles supérieur gauche et droit */
-  div.box_haut {
-    display: flex;
-    margin: 0px;
-    padding: 0px;
-    width: 85px;
-    height: 70px;
-    border-radius: 8px 8px 0px 0px;
-    -moz-border-radius: 8px 8px 0px 0px;
-    -webkit-border-radius: 8px 8px 0px 0px;
-    background-color: transparent !important;
-
-  }
-
-  [data-theme="core2019_Dark"] .box_haut {
-    /*display: flex margin: 0px;*/
-    padding: 0px;
-    width: 85px;
-    height: 70px;
-    border-radius: 8px 8px 0px 0px;
-    -moz-border-radius: 8px 8px 0px 0px;
-    -webkit-border-radius: 8px 8px 0px 0px;
-    background-color: transparent !important;
-  }
-
-  /* class css permetant de faire une box arrondie sur les angles inférieur gauche et droit */
-  div.box_bas {
-    padding: 0px;
-    margin: 0px;
-    width: 86px;
-    height: 25px;
-    border-radius: 0px 0px 8px 8px;
-    -moz-border-radius: 0px 0px 8px 8px;
-    -webkit-border-radius: 0px 0px 8px 8px;
-  }
-
-  [data-theme="core2019_Dark"] .box_bas {
-    padding: 0px;
-    margin: 0px;
-    width: 86px;
-    height: 25px;
-    border-radius: 0px 0px 8px 8px;
-    -moz-border-radius: 0px 0px 8px 8px;
-    -webkit-border-radius: 0px 0px 8px 8px;
-  }
-
-  div.value-entier {
-    margin: auto;
-    font-size: 38px;
-    font-weight: bold;
-    height: 60px;
-    z-index: 2;
-    letter-spacing: 0px;
-  }
-
-  div.unite {
-    font-size: 13px;
-    font-weight: bold;
-    position: absolute;
-    top: 50px;
-    width: 85px;
-    z-index: 2;
-    letter-spacing: 0px;
-    color: var(--gris);
-    text-align: center;
-  }
-
-  div.NomCmd {
-    padding-top: 2px;
-    font-size: 1em;
-    font-weight: bold;
-    position: absolute;
-    vertical-align: middle;
-    top: 82%;
-    left: 0%;
-    z-index: 2;
-    width: 85px;
-    text-align: center;
-  }
-
-  [data-theme="core2019_Dark"] .NomCmd {
-    padding-top: 2px;
-    font-size: 1em;
-    font-weight: bold;
-    position: absolute;
-    vertical-align: middle;
-    top: 82%;
-    left: 0%;
-    z-index: 2;
-    width: 85px;
-    text-align: center;
-  }
 
   .Arc {
     border: 4px solid transparent;
