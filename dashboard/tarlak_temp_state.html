@@ -1,317 +1,209 @@
-<div style="margin:0px 0px 16px 0px; padding:0px; width:85px; height:85px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#"
-	data-cmd_uid="#uid#">
-	<div class="icone#uid# box_haut" style="z-index:1">
-		<div class="value-entier#id#"></div><div class="unite#id#">#unite#</div>
-		<div class="value-decimal#id#"></div>
-	<!--<div class="unite#id#">#unite#</div>-->
-	</div>
-	<div style="z-index:2;">
-		<div class="NomCmd#id# box_bas#id#">#name_display#</div>
-	</div>
-	<style>
-		/* Définition de variable CSS contenant les valeurs des couleurs) */
-		:root {
-			--bleu_clair: #00beff;
-			--bleu_fonce: #2989db;
-			--jaune: #f6ff00;
-			--orange_clair: #ffaa00;
-			--orange_moyen: #ff5a00;
-			--orange_fonce: #ff7300;
-			--rouge: #da3037;
-			--vert_fonce: #829f25;
-			--violet: #dc00ff;
-			--noir: #000000;
-			--gris: #787878;
-			--blanc: #ffffff;
-		}
+<!--
+//Tarlak :
+Version  0.1 :  - Refonte du widget, meilleurs utilisation du css pour ne plus avoir de décallage
+                - Suppression des bornages de température pour définir les différents couleurs, elles sont
+                maintenant calculée en fonction d'une couleur chaude et d'une couleur froide
+                - De nouveau paramètre permettent une meilleur personalisation
 
-		/* class css permetant de faire une box arrondie sur les angles supérieur gauche et droit */
-		div.box_haut {
-			display:flex
-			margin: 0px;
-			padding: 0px;
-			width: 85px;
-			height: 70px;
-			border-radius: 8px 8px 0px 0px;
-			-moz-border-radius: 8px 8px 0px 0px;
-			-webkit-border-radius: 8px 8px 0px 0px;
-			background-color: var(--gris) !important;
-		}
+Avec l'aide de Domotech pour l'amélioration css, grand merci a lui : http://youtube.com/domotech
+** Paramètres option du widget
 
-		[data-theme="core2019_Dark"] .box_haut {
-			display:flex
-			margin: 0px;
-			padding: 0px;
-			width: 85px;
-			height: 70px;
-			border-radius: 8px 8px 0px 0px;
-			-moz-border-radius: 8px 8px 0px 0px;
-			-webkit-border-radius: 8px 8px 0px 0px;
-			background-color: transparent !important;
-		}
-
-		/* class css permetant de faire une box arrondie sur les angles inférieur gauche et droit */
-		div.box_bas#id# {
-			padding: 0px;
-			margin: 0px;
-			width: 85px;
-			height: 25px;
-			border-radius: 0px 0px 8px 8px;
-			-moz-border-radius: 0px 0px 8px 8px;
-			-webkit-border-radius: 0px 0px 8px 8px;
-		}
-
-		/************ Définition de class de couleur ************/
-		/*  chaque class appel la variable de couleur associée  */
-		.bleu_clair {
-			background: var(--bleu_clair);
-			border: 2px solid var(--bleu_clair);
-		}
-
-		.bleu_fonce {
-			background: var(--bleu_fonce);
-			border: 2px var(--bleu_fonce);
-		}
-
-		.jaune {
-			background: var(--jaune);
-			border: 2px solid var(--jaune);
-		}
-
-		.orange_clair {
-			background: var(--orange_clair);
-			border: 2px solid var(--orange_clair);
-		}
-
-		.orange_moyen {
-			background: var(--orange_moyen);
-			border: 2px solid var(--orange_moyen);
-		}
-
-		.orange_fonce {
-			background: var(--orange_fonce);
-			border: 2px solid var(--orange_fonce);
-		}
-
-		.rouge {
-			background: var(--rouge);
-			border: 2px solid var(--rouge);
-		}
-
-		.vert_fonce {
-			background: var(--vert_fonce);
-			border: 2px solid var(--vert_fonce);
-		}
-
-		.violet {
-			background: var(--violet);
-			border: 2px solid var(--violet);
-		}
-
-		.noir {
-			background: var(--noir);
-			border: 2px solid var(--noir);
-		}
-
-		.gris {
-			background: var(--gris);
-			border: 2px solid var(--gris);
-		}
-
-		/* class css pour le txt dans le cadre inférieur (Température) */
-		.txt_noir {
-			color: var(--noir);
-		}
-
-		.txt_blanc {
-			color: var(--blanc);
-		}
-
-		/******  Fin de déclaration des class de couleur ******/
-
-		div.value-entier#id# {
-			margin: 24px 0 0 0;
-			font-size: 34px;
-			font-weight: bold;
-			width: 55px;
-			height: 30px;
-			z-index: 2;
-			letter-spacing: 0px;
-			text-align:right;
-		}
-
-		div.value-decimal#id# {
-			margin: 32px 0 0 0;
-			font-size: 12px;
-			font-weight: bold;
-			height: 25px;
-			z-index: 5;
-			letter-spacing: 0px;
-		}
-
-		div.unite#id# {
-			margin:8px 0 0 50px;
-			font-size: 12px;
-			font-weight: bold;
-			position: absolute;
-			width: 25px;
-			height: 10px;
-			z-index: 8;
-			letter-spacing: 0px;
-			text-align:left;
-
-		}
-
-		div.NomCmd#id# {
-			padding-top:2px;
-			font-size: 1em;
-			font-weight: bold;
-			position: absolute;
-			vertical-align: middle;
-			top: 82%;
-			left: 0%;
-			z-index: 2;
-			width:85px;
-			text-align: center;
-		}
-
-		[data-theme="core2019_Dark"] .NomCmd#id# {
-			padding-top:2px;
-			font-size: 1em;
-			font-weight: bold;
-			position: absolute;
-			vertical-align: middle;
-			top: 82%;
-			left: 0%;
-			z-index: 2;
-			width:85px;
-			text-align: center;
-		}
-	</style>
-
-	<script>
-		jeedom.cmd.update['#id#'] = function(_options) {
-
-			// Récupération des valeurs
-			var valeur = _options.display_value;
-			// Séparation des entier et décimal
-			var entier = Math.trunc(valeur);
-
-			//Simplification merci @jpty
-			var valeur = parseFloat(_options.display_value).toFixed(2)
-			var entier = valeur.split('.')[0]
-			var decimal = valeur.split('.')[1]
+nom       Nom personalisé du widget (par défaut le nom de la commande)
+couleurch Couleur pour les température chaude (par defaut #fc0303)
+couleurfr Couleur pour les température froide (par defaut #6ecfff)
+valmin    Valeur minimum retournée par la commande (par defaut celle fournie par jeedom si elle est renseignée)
+valmax    Valeur maximum retournée par la commande (par défaut celle fournie par jeedom si elle est renseignée)
+-->
 
 
+<div class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#" style="margin:10px;">
+  <div class="box_full" style="height:100px; width:100px; overflow:hidden;">
+    <div class="box_top" style="height:80px;display:flex;width:85px;">
+      <div style="margin:auto;">
+        <span class="value">#value#</span> <span class="unite">#unite#</span>
+      </div>
 
-			// Regle d'affichage des decimaux suivant le valeur a afficher
-			if (entier == 1) {
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').text(entier);
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').attr('style', 'right:8px;');
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').text("." + decimal);
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').attr('style', 'right:-10px;');
-			} else if (entier == -1) {
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').text(entier);
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').attr('style', 'right:12px;');
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').text("." + decimal);
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').attr('style', 'right:-15px;');
-
-			} else if (valeur < 0 && valeur > -10) {
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').text(entier);
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').attr('style', 'right:14px;');
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').text("." + decimal);
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').attr('style', 'right:-16px;');
-			} else if (valeur <= -10 && valeur > -100) {
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').text(entier);
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').attr('style', 'right:10px;');
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').text("." + decimal);
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').attr('style', 'right:-30px;');
-			} else if (valeur >= 0 && valeur < 10) {
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').text('0'+entier);
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').attr('style', 'right:13px;');
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').text("." + decimal);
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').attr('style', 'right:-10px;');
-			} else if (valeur >= 100) {
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').text(entier);
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').attr('style', 'right:0px;');
-			} else if (valeur <= -100) {
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').text(entier);
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').attr('style', 'right:0px; font-size:35px;');
-			} else {
-				$('.cmd[data-cmd_uid=#uid#] .value-entier#id#').text(entier);
-				$('.cmd[data-cmd_uid=#uid#] .value-decimal#id#').text("." + decimal);
-			}
-
-			// Gestion des couleurs
-			//var srcImg = 'data/customTemplates/dashboard/cmd.info.numeric.TempDyna/fonds/mich0111/';
-
-			if (valeur < 0) {
-				// Modifiction de la couleur du cadre de la box supérieur en fonction de la temperature
-				$('.icone#uid#').css("border", "2px solid var(--bleu_clair)");
-				// Modification de la couleur du texte de la témpérature
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--bleu_clair)");
-				// Modification de la couleur box inférieur en fonction de la température
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("bleu_clair txt_noir");
-			} else if (valeur >= 0 && valeur < 5) {
-				$('.icone#uid#').css("border", "2px solid var(--bleu_fonce)");
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--bleu_fonce)");
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("bleu_fonce txt_blanc");
-			} else if (valeur >= 5 && valeur < 10) {
-				$('.icone#uid#').css("border", "2px solid var(--vert_fonce)");
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--vert_fonce)");
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("vert_fonce txt_blanc");
-			} else if (valeur >= 10 && valeur < 15) {
-				$('.icone#uid#').css("border", "2px solid var(--jaune)");
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--jaune)");
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("jaune txt_noir");
-			} else if (valeur >= 15 && valeur < 20) {
-				$('.icone#uid#').css("border", "2px solid var(--orange_clair)");
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--orange_clair)");
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("orange_clair txt_blanc");
-			} else if (valeur >= 20 && valeur < 25) {
-				$('.icone#uid#').css("border", "2px solid var(--orange_moyen)");
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--orange_moyen)");
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("orange_moyen txt_blanc");
-			} else if (valeur >= 25 && valeur < 30) {
-				$('.icone#uid#').css("border", "2px solid var(--orange_fonce)");
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--orange_fonce)");
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("orange_fonce txt_blanc");
-			} else if (valeur >= 30 && valeur < 35) {
-				$('.icone#uid#').css("border", "2px solid var(--rouge)");
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--rouge)");
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("rouge txt_blanc");
-			} else if (valeur >= 35 && valeur < 40) {
-				$('.icone#uid#').css("border", "2px solid var(--violet)");
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--violet)");
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("violet txt_blanc");
-			} else if (valeur >= 40 && valeur < 45) {
-				$('.icone#uid#').css("border", "2px solid var(--gris)");
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--gris)");
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("gris txt_blanc");
-			} else if (valeur >= 45) {
-				$('.icone#uid#').css("border", "2px solid var(--noir)");
-				$(".value-entier#id#,.value-decimal#id#,.unite#id#").css("color", "var(--noir)");
-				$(".NomCmd#id#").removeClass("bleu_clair bleu_fonce jaune orange_clair orange_moyen orange_fonce rouge vert_fonce violet noir gris txt_noir txt_blanc");
-				$(".NomCmd#id#").addClass("noir txt_blanc");
-			}
-
-			$('.cmd[data-cmd_id=#id#]').attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
-		}
-		jeedom.cmd.update['#id#']({
-			display_value: '#state#',
-			valueDate: '#valueDate#',
-			collectDate: '#collectDate#',
-			alertLevel: '#alertLevel#'
-		});
-	</script>
+    </div>
+    <div class="box_bottom" style="background-color:cyan;display:flex;">
+      <div class="NomCmd #hide_name#" style="margin:auto; ">nom#id#</div>
+    </div>
+  </div>
+  <div class="cmdStats#id# #hide_history#" style="height:20px;display:flex;width:85px;padding-top:3px;">
+    <div class="center-block">
+      <span title='Min' class='tooltips'>#minHistoryValue#</span>|<span title='Moyenne' class='tooltips'>#averageHistoryValue#</span>|<span title='Max' class='tooltips'>#maxHistoryValue#</span> <i class="#tendance#"></i>
+    </div>
+  </div>
 </div>
+
+<style>
+  .box_full {
+    border-radius: 10px;
+    border: 3px solid cyan;
+    background:#AAAAAA;
+  }
+
+[data-theme="core2019_Dark"] .box_full{
+    background: transparent !important;
+}
+
+  .box_top{
+
+  }
+  .value {
+    font-size: 38px;
+  }
+
+  .box_bottom {
+    line-height: 20px;
+  }
+
+  .NomCmd {
+    text-align: center;
+    mix-blend-mode: difference;
+    color: white;
+  }
+
+  .unite {
+    font-size: 12px;
+    position: relative;
+    bottom: 25px;
+    color: cyan;
+  }
+</style>
+
+
+<script>
+  jeedom.cmd.update['#id#'] = function(_options) {
+    var cmd = $('.cmd[data-cmd_id=#id#]');
+    //Définition des paramètres
+    var nom#id# = ('#nom#' != '#' + 'nom#') ? "#nom#" : "#name#"; // remplace le nom de la commande par celui de votre choix
+    var couleurch#id# = ('#couleurch#' != '#' + 'couleurch#') ? "#couleurch#" : "#fc0303"; // couleur chaude
+    var couleurfr#id# = ('#couleurfr#' != '#' + 'couleurfr#') ? "#couleurfr#" : "#6ecfff"; // couleur froide
+    var valmin#id# = ('#valmin#' != '#' + 'valmin#') ? "#valmin#" : parseInt('#minValue#'); // température minimal
+    var valmax#id# = ('#valmax#' != '#' + 'valmax#') ? "#valmax#" : parseInt('#maxValue#'); // température maximum
+
+    cmd.find('.NomCmd').empty().append(nom#id#);
+    //Definition des variables
+    var valeur = Math.trunc(_options.display_value);
+
+    // Code from Neil @McCallion : https://codepen.io/njmcode/pen/axoyD?editors=0010
+    // Thanks to him !!
+    // Converts a #ffffff hex string into an [r,g,b] array
+    function h2r(hex) {
+      var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+      return result ? [
+        parseInt(result[1], 16),
+        parseInt(result[2], 16),
+        parseInt(result[3], 16)
+      ] : null;
+    };
+
+    // Inverse of the above
+    function r2h(rgb) {
+      return "#" + ((1 << 24) + (rgb[0] << 16) + (rgb[1] << 8) + rgb[2]).toString(16).slice(1);
+    };
+
+
+    function rgb2hsl(color) {
+      var r = color[0] / 255;
+      var g = color[1] / 255;
+      var b = color[2] / 255;
+
+      var max = Math.max(r, g, b),
+        min = Math.min(r, g, b);
+      var h, s, l = (max + min) / 2;
+
+      if (max == min) {
+        h = s = 0; // achromatic
+      } else {
+        var d = max - min;
+        s = (l > 0.5 ? d / (2 - max - min) : d / (max + min));
+        switch (max) {
+          case r:
+            h = (g - b) / d + (g < b ? 6 : 0);
+            break;
+          case g:
+            h = (b - r) / d + 2;
+            break;
+          case b:
+            h = (r - g) / d + 4;
+            break;
+        }
+        h /= 6;
+      }
+
+      return [h, s, l];
+    };
+
+    function hsl2rgb(color) {
+      var l = color[2];
+
+      if (color[1] == 0) {
+        l = Math.round(l * 255);
+        return [l, l, l];
+      } else {
+        function hue2rgb(p, q, t) {
+          if (t < 0) t += 1;
+          if (t > 1) t -= 1;
+          if (t < 1 / 6) return p + (q - p) * 6 * t;
+          if (t < 1 / 2) return q;
+          if (t < 2 / 3) return p + (q - p) * (2 / 3 - t) * 6;
+          return p;
+        }
+
+        var s = color[1];
+        var q = (l < 0.5 ? l * (1 + s) : l + s - l * s);
+        var p = 2 * l - q;
+        var r = hue2rgb(p, q, color[0] + 1 / 3);
+        var g = hue2rgb(p, q, color[0]);
+        var b = hue2rgb(p, q, color[0] - 1 / 3);
+        return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
+      }
+    };
+
+    function interpolateHSL(color1, color2, factor) {
+      if (arguments.length < 3) {
+        factor = 0.5;
+      }
+      var hsl1 = rgb2hsl(color1);
+      var hsl2 = rgb2hsl(color2);
+      for (var i = 0; i < 3; i++) {
+        hsl1[i] += factor * (hsl2[i] - hsl1[i]);
+      }
+      return hsl2rgb(hsl1);
+    };
+    //End of code from Neil McCallion : https://codepen.io/njmcode/pen/axoyD?editors=0010
+
+    couleur1 = h2r(couleurch#id#);
+    couleur2 = h2r(couleurfr#id#);
+    step#id# =(valmax#id# - valmin#id#);
+    var factorstep = 1 / (step#id# -1);
+
+    //Génération de la couleur HSL, récupérée en RGB afin d'une couleur plus pétante
+    color#id# = interpolateHSL(couleur2, couleur1,factorstep * (valeur-valmin#id#));
+
+    //Colorisation de la box et du text en fonction de la couleur générée
+    cmd.find('.box_full').attr('style', 'border: 3px solid rgb(' + color#id# + ');');
+    cmd.find('.box_bottom').attr('style', 'background-color: rgb(' + color#id# + ');');
+    cmd.find('.value').attr('style', 'color: rgb(' + color#id# + ');');
+    cmd.find('.unite').css('color', 'rgb(' + color#id# + ');');
+
+    if (valeur.toString()[0] == '-' && valeur.toString().length > 3) {
+      cmd.find('.value').attr('style', 'color: rgb(' + color#id# + ');');
+      cmd.find('.value').css('font-size', '32px');
+
+    }
+
+
+    $('.cmd[data-cmd_uid=#uid#] .value').text(valeur);
+
+
+    $('.cmd[data-cmd_id=#id#]').attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
+  }
+  jeedom.cmd.update['#id#']({
+    display_value: '#state#',
+    valueDate: '#valueDate#',
+    collectDate: '#collectDate#',
+    alertLevel: '#alertLevel#'
+  });
+</script>
