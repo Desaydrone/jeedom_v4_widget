@@ -1,0 +1,82 @@
+<!--
+//Tarlak :
+Version  0.1 :  - Refonte du widget, meilleurs utilisation du css pour ne plus avoir de décallage
+                - Suppression des bornages de température pour définir les différents couleurs, elles sont
+                maintenant calculée en fonction d'une couleur chaude et d'une couleur froide
+                - De nouveau paramètre permettent une meilleur personalisation
+
+Avec l'aide de Domotech pour l'amélioration css, grand merci a lui : http://youtube.com/domotech
+** Paramètres option du widget
+
+nom       Nom personnalisé du widget (par défaut le nom de la commande)
+couleurch Couleur pour les température chaude (par défaut #fc0303 un rouge)
+couleurfr Couleur pour les température froide (par défaut #6ecfff un bleu très clair)
+-->
+
+
+<div class="cmd cmd-widget #history#" data-type="info" data-subtype="numeric" data-template="badge" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
+  <div class="box_full" style="height:100px; width:100px; overflow:hidden;">
+    <div class="box_top" style="height:80px;display:flex;width:85px;">
+      <div style="margin:auto;">
+        <span class="valeurtar value">#value#</span><span class="decimaltar"></span><span class="unitetar unite">#unite#</span>
+      </div>
+    </div>
+    <div class="box_bottom" style="display:flex;">
+      <div class="title #hide_name#">
+        <div  class="cmdNametar cmdName">nom#id#</div>
+      </div>
+    </div>
+  </div>
+  <div class="cmdStats #hide_history#">
+    <div class="col-xs-12 center-block">
+      <span title='Min' class='tooltips'>#minHistoryValue#</span>|<span title='Moyenne' class='tooltips'>#averageHistoryValue#</span>|<span title='Max' class='tooltips'>#maxHistoryValue#</span> <i class="#tendance#"></i>
+    </div>
+  </div>
+
+
+  <style>
+    .box_full {
+      border-radius: 10px;
+      border: 3px solid cyan;
+      background:#AAAAAA;
+    }
+
+    [data-theme="core2019_Dark"] .box_full{
+      background: transparent !important;
+    }
+
+    .box_top{
+
+    }
+
+    .valeurtar {
+      font-size: 38px;
+    }
+
+    .box_bottom {
+      line-height: 20px;
+    }
+
+    .cmdNametar {
+      text-align: center;
+      mix-blend-mode: difference;
+      color: white;
+    }
+
+    .unitetar {
+      font-size: 12px;
+      position: relative;
+      bottom: 25px;
+      color: cyan;
+    }
+
+    .decimaltar{
+      font-size:14px;
+    }
+  </style>
+
+<script>
+
+</script>
+
+</div>
