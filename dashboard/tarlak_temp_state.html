@@ -83,8 +83,8 @@ couleurfr Couleur pour les température froide (par défaut #6ecfff un bleu trè
       var nom#id# = ('#nom#' != '#' + 'nom#') ? "#nom#" : "#name#"; // remplace le nom de la commande par celui de votre choix
       var couleurch#id# = ('#couleurch#' != '#' + 'couleurch#') ? "#couleurch#" : "#fc0303"; // couleur chaude
       var couleurfr#id# = ('#couleurfr#' != '#' + 'couleurfr#') ? "#couleurfr#" : "#6ecfff"; // couleur froide
-      var valmin#id# = ('#valmin#' != '#' + 'valmin#') ? "#valmin#" : parseInt('#minValue#'); // température minimal
-      var valmax#id# = ('#valmax#' != '#' + 'valmax#') ? "#valmax#" : parseInt('#maxValue#'); // température maximum
+      var valmin#id# =  parseInt('#minValue#'); // température minimal
+      var valmax#id# =  parseInt('#maxValue#'); // température maximum
       var valeur = parseFloat(_options.display_value).toFixed(1)
       var entier = valeur.split('.')[0];
       var decimal = valeur.split('.')[1];

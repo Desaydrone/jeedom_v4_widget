@@ -76,7 +76,34 @@ couleurfr Couleur pour les température froide (par défaut #6ecfff un bleu trè
   </style>
 
 <script>
+  jeedom.cmd.update['#id#'] = function(_options) {
+    var cmd = $('.cmd[data-cmd_id=#id#]');
+    //Définition des paramètres
+    var nom#id# = ('#nom#' != '#' + 'nom#') ? "#nom#" : "#name#"; // remplace le nom de la commande par celui de votre choix
+    var couleurch#id# = ('#couleurch#' != '#' + 'couleurch#') ? "#couleurch#" : "#fc0303"; // couleur chaude
+    var couleurfr#id# = ('#couleurfr#' != '#' + 'couleurfr#') ? "#couleurfr#" : "#6ecfff"; // couleur froide
+    var valmin#id# =  parseInt('#minValue#'); // température minimal
+    var valmax#id# =  parseInt('#maxValue#'); // température maximum
+    var valeur = parseFloat(_options.display_value).toFixed(1)
+    var entier = valeur.split('.')[0];
+    var decimal = valeur.split('.')[1];
+    cmd.find('.cmdNametar').empty().append(nom#id#);
+    cmd.find('.decimaltar').empty().append(decimal);
 
+
+
+    $('.cmd[data-cmd_uid=#uid#] .decimaltar').text('.'+decimal);
+    $('.cmd[data-cmd_uid=#uid#] .valeurtar').text(entier);
+
+
+    $('.cmd[data-cmd_id=#id#]').attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
+  }
+  jeedom.cmd.update['#id#']({
+    display_value: '#state#',
+    valueDate: '#valueDate#',
+    collectDate: '#collectDate#',
+    alertLevel: '#alertLevel#'
+  });
 </script>
 
 </div>
