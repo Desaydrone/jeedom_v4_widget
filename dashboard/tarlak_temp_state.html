@@ -23,7 +23,7 @@ couleurfr Couleur pour les température froide (par défaut #6ecfff un bleu trè
     </div>
     <div class="box_bottom" style="background-color:cyan;display:flex;">
       <div class="title #hide_name#">
-        <div  class="cmdNametar cmdName">nom#id#</div>
+        <div  class="cmdNametar#id# cmdName">nom#id#</div>
       </div>
     </div>
   </div>
@@ -57,7 +57,7 @@ couleurfr Couleur pour les température froide (par défaut #6ecfff un bleu trè
       line-height: 20px;
     }
 
-    .cmdNametar {
+    .cmdNametar#id# {
       text-align: center;
       mix-blend-mode: difference;
       color: white;
@@ -88,7 +88,7 @@ couleurfr Couleur pour les température froide (par défaut #6ecfff un bleu trè
       var valeur = parseFloat(_options.display_value).toFixed(1)
       var entier = valeur.split('.')[0];
       var decimal = valeur.split('.')[1];
-      cmd.find('.cmdNametar').empty().append(nom#id#);
+      cmd.find('.cmdNametar#id#').empty().append(nom#id#);
       cmd.find('.decimaltar').empty().append(decimal);
       //Definition des variables
       //var valeur = Math.trunc(_options.display_value);
