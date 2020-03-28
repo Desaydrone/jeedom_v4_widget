@@ -1,145 +1,130 @@
-<div style="margin:0px 0px 16px 0px; padding:0px; width:85px; height:85px;" class="cmd #history# container-fluid tooltips cmd-widget netatmodisplay" data-type="info" data-version="#version#" data-eqLogic_id="#eqLogic_id#" data-subtype="other" data-cmd_id="#id#" data-cmd_uid="#uid#">
-	<div class="box_haut_presence" style="z-index:1"></div>
-	<div style="z-index:2;">
-		<div class="NomCmd box_bas_presence">#name_display#</div>
-      	<div class="user_presence">
-			<div class="face_circle_presence"></div>
-			<div class="body_presence"></div>
-      	</div>
+<!--
+//Tarlak :
+Version  0.1 :
+
+Avec l'aide de Domotech pour l'amélioration css, grand merci a lui : http://youtube.com/domotech
+** Paramètres option du widget
+
+nom       Nom personnalisé du widget (par défaut le nom de la commande)
+-->
+
+
+<div class="cmd cmd-widget #history#" data-type="info" data-subtype="numeric" data-template="badge" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
+  <div class="box_full#id#" style="height:100px; width:100px; overflow:hidden;">
+    <div class="box_top#id#" style="height:80px;display:flex;width:85px;">
+      <div style="margin:auto;">
+       <svg class="checkmark" id="follower-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 45 45" enable-background="new 0 0 45 45" xml:space="preserve">
+          <g class="person-icon">
+            <g class="body-icon">
+              <circle class="head" fill-rule="evenodd" clip-rule="evenodd" fill="var(--couleuractualisee#id#)" cx="19.6" cy="17.2" r="7.3"/>
+              <path id="body" fill-rule="evenodd" clip-rule="evenodd" fill="var(--couleuractualisee#id#)" d="M9.9,31.7c0-2.7,2.2-4.9,4.9-4.9h10.9c2.7,0,4.9,2.2,4.9,4.9c0,1.3-5.2,4-10.3,4C15,35.7,9.9,33.1,9.9,31.7z"/>
+            </g>
+          </g>
+        </svg>
+      </div>
     </div>
-</div>
-<style>
-  		/* Définition de variable CSS contenant les valeurs des couleurs) */
-  		:root {
-          	--absent: #da3037;
-          	--present: #30b455; /*#829f25;*/
-          	--noir: #000000;
-          	--gris: #838383;
-          	--blanc: #ffffff;
-		}
+    <div class="box_bottom#id#" style="display:flex;">
+      <div class="title #hide_name#">
+        <div  class="cmdNametar#id# cmdName">nom#id#</div>
+      </div>
+    </div>
+  </div>
+  <div class="cmdStats #hide_history#">
+    <div class="col-xs-12 center-block">
+      <span title='Min' class='tooltips'>#minHistoryValue#</span>|<span title='Moyenne' class='tooltips'>#averageHistoryValue#</span>|<span title='Max' class='tooltips'>#maxHistoryValue#</span> <i class="#tendance#"></i>
+    </div>
+  </div>
 
-  		.absent{
-          	color: var(--absent);
-  		}
+  <style>
+    .box_full#id# {
+      border-radius: 10px;
+      border: 3px solid var(--couleuractualisee#id#);
+      background:#AAAAAA;
+      width: 100px;
 
-   		.present{
-        	color : var(--present);
-  		}
+    }
 
-    	.txt_noir{
-          	color: var(--noir);
-		}
-  		.txt_blanc{
-          	color: var(--blanc);
-		}
+    [data-theme="core2019_Dark"] .box_full{
+      background: transparent !important;
+    }
 
-  		/* class css permetant de faire une box arrondie sur les angles supérieur gauche et droit */
-  		.box_haut_presence{
-          	margin:0px;
-          	padding:0px;
-			width : 85px;
-          	height : 70px;
-			border-radius: 8px 8px 0px 0px;
-			-moz-border-radius: 8px 8px 0px 0px;
-			-webkit-border-radius: 8px 8px 0px 0px;
-          	background-color:var(--blanc)!important;
-  		}
+    .box_top#id#{
+      position: relative;
+      left: 50%;
+      -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+      transform: translateX(-50%);
+    }
 
-		[data-theme="core2019_Dark"] .box_haut_presence{
-          	margin:0px;
-          	padding:0px;
-			width : 85px;
-          	height : 70px;
-			border-radius: 8px 8px 0px 0px;
-			-moz-border-radius: 8px 8px 0px 0px;
-			-webkit-border-radius: 8px 8px 0px 0px;
-          	background-color: transparent!important;
+    .valeurtar#id# {
+      font-size: 38px;
+    }
 
-  		}
+    .box_bottom#id# {
+      line-height: 23px;
+      background: var(--couleuractualisee#id#);
+    }
 
-  		/* class css permetant de faire une box arrondie sur les angles inférieur gauche et droit */
-    	.box_bas_presence
-    	{
-          	padding:0px;
-          	margin:0px;
-			width : 85px;
-          	height : 25px;
-			border-radius: 0px 0px 8px 8px;
-          	-moz-border-radius: 0px 0px 8px 8px;
-			-webkit-border-radius: 0px 0px 8px 8px;
-			margin-bottom:15px;
-		}
+    .cmdNametar#id# {
+      text-align: center;
+      /*mix-blend-mode: difference;*/
+      color: white;
 
-[data-theme="core2019_Dark"] .box_bas_presence
-    	{
-          	padding:0px;
-			width : 85px;
-          	height : 25px;
-			border-radius: 0px 0px 8px 8px;
-          	-moz-border-radius: 0px 0px 8px 8px;
-			-webkit-border-radius: 0px 0px 8px 8px;
-			margin-bottom:15px;
-		}
+    }
 
-      	.user_presence{
-            position:absolute;
-          	top:5px;
-          	margin-top: 5px;
-			height : 60px;
-          	width : 85px;
-          	vertical-align:middle;
-          	z-index:2;
+    .unitetar {
+      font-size: 12px;
+      position: relative;
+      bottom: 25px;
+      color: cyan;
+    }
 
-  		}
- 		.face_circle_presence {
-			height : 24px;
-          	width : 24px;
-          	border: .5em solid transparent;
-          	border-radius: 50%;
-          	z-index:2;
-	  	}
+    .decimaltar{
+      font-size:14px;
+    }
 
-      	.body_presence {
-			position: relative;
-          	height: 20px;
-          	z-index: 2;
-          	width: 30px;
-          	border-radius : 5px 5px 0 0;
-	  	}
+    :root {
+          --absent: #fc0303;
+          --present: #30b455; /*#829f25;*/
+          --noir: #000000;
+          --gris: #838383;
+          --blanc: #ffffff;
+          --couleuractualisee#id#:var(--absent);
+    }
 
-      	.NomCmd {
-          	font-size:1em;
-          	font-weight:bold;
-            position:absolute;
-            vertical-align:middle;
-          	top:82%;
-       		left:0%;
-            z-index:2;
-	  	}
-</style>
+  </style>
 
 <script>
-		jeedom.cmd.update['#id#'] = function(_options){
-		var cmd = $('.cmd[data-cmd_id=#id#]');
+  jeedom.cmd.update['#id#'] = function(_options) {
+    var cmd = $('.cmd[data-cmd_id=#id#]');
 
-        // Récupération des valeurs
-        var valeur = _options.display_value;
-        if (valeur == 0){
-          	cmd.find('.box_haut_presence').css('border','2px solid var(--absent)');
-          	cmd.find('.box_bas_presence').css('background-color','var(--absent)');
-          	cmd.find('.body_presence').css('background-color','var(--absent)');
-          	cmd.find('.face_circle_presence').css('background-color','var(--absent)');
-          	cmd.find('.NomCmd').addClass('absent txt_blanc');
-        }
-        else if(valeur==1){
-          	cmd.find('.box_haut_presence').css('border','2px solid var(--present)');
-          	cmd.find('.box_bas_presence').css('background','var(--present)');
-          	cmd.find('.body_presence').css('background','var(--present)');
-          	cmd.find('.face_circle_presence').css('background','var(--present)');
-			cmd.find('.NomCmd').addClass('present txt_blanc');
-        }
-	}
-	jeedom.cmd.update['#id#']({display_value:'#state#',valueDate:'#valueDate#',collectDate:'#collectDate#',alertLevel:'#alertLevel#'});
+    //Définition des paramètres
+    var nom#id# = ('#nom#' != '#' + 'nom#') ? "#nom#" : "#name#"; // remplace le nom de la commande par celui de votre choix
+    var couleurch#id# = ('#couleurch#' != '#' + 'couleurch#') ? "#couleurch#" : "#fc0303"; // couleur chaude
+    var couleurfr#id# = ('#couleurfr#' != '#' + 'couleurfr#') ? "#couleurfr#" : "#6ecfff"; // couleur froide
+    var valmin#id# =  parseInt('#minValue#'); // température minimal
+    var valmax#id# =  parseInt('#maxValue#'); // température maximum
+    var valeur = _options.display_value;
+    cmd.find('.cmdNametar#id#').empty().append(nom#id#);
+
+    // Récupération des valeurs
+    if (valeur == 0){
+        document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--absent');
+    }
+    else if(valeur==1){
+        document.documentElement.style.setProperty('--couleuractualisee#id#', 'var(--present');
+    }
 
 
+
+    $('.cmd[data-cmd_id=#id#]').attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
+  }
+  jeedom.cmd.update['#id#']({
+    display_value: '#state#',
+    valueDate: '#valueDate#',
+    collectDate: '#collectDate#',
+    alertLevel: '#alertLevel#'
+  });
 </script>
+
+</div>

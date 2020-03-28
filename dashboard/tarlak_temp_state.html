@@ -39,6 +39,7 @@ couleurfr Couleur pour les température froide (par défaut #6ecfff un bleu trè
       border-radius: 10px;
       border: 3px solid cyan;
       background:#AAAAAA;
+      width: 100px;
     }
 
     [data-theme="core2019_Dark"] .box_full{
@@ -90,10 +91,6 @@ couleurfr Couleur pour les température froide (par défaut #6ecfff un bleu trè
       var decimal = valeur.split('.')[1];
       cmd.find('.cmdNametar#id#').empty().append(nom#id#);
       cmd.find('.decimaltar').empty().append(decimal);
-      //Definition des variables
-      //var valeur = Math.trunc(_options.display_value);
-      //var decimal=
-
 
 
       // Code from Neil @McCallion : https://codepen.io/njmcode/pen/axoyD?editors=0010
@@ -202,7 +199,6 @@ couleurfr Couleur pour les température froide (par défaut #6ecfff un bleu trè
 
       if (valeur < -99  || valeur  >99) {
         cmd.find('.valeurtar').css('font-size', '28px');
-        /*cmd.find('.valeurtar').attr('style', 'color: rgb(' + color#id# + ');');*/
       }
 
       $('.cmd[data-cmd_uid=#uid#] .decimaltar').text('.'+decimal);
