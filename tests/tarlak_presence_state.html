@@ -1,9 +1,6 @@
 <!--
 //Tarlak :
-Version  0.1 :  - Refonte du widget, meilleurs utilisation du css pour ne plus avoir de décallage
-                - Suppression des bornages de température pour définir les différents couleurs, elles sont
-                maintenant calculée en fonction d'une couleur chaude et d'une couleur froide
-                - De nouveau paramètre permettent une meilleur personalisation
+Version  0.1 :
 
 Avec l'aide de Domotech pour l'amélioration css, grand merci a lui : http://youtube.com/domotech
 ** Paramètres option du widget
@@ -16,7 +13,7 @@ nom       Nom personnalisé du widget (par défaut le nom de la commande)
   <div class="box_full#id#" style="height:100px; width:100px; overflow:hidden;">
     <div class="box_top#id#" style="height:80px;display:flex;width:85px;">
       <div style="margin:auto;">
-        <svg class="checkmark" id="follower-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 45 45" enable-background="new 0 0 45 45" xml:space="preserve">
+       <svg class="checkmark" id="follower-icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 45 45" enable-background="new 0 0 45 45" xml:space="preserve">
           <g class="person-icon">
             <g class="body-icon">
               <circle class="head" fill-rule="evenodd" clip-rule="evenodd" fill="var(--couleuractualisee#id#)" cx="19.6" cy="17.2" r="7.3"/>
@@ -42,7 +39,9 @@ nom       Nom personnalisé du widget (par défaut le nom de la commande)
     .box_full#id# {
       border-radius: 10px;
       border: 3px solid var(--couleuractualisee#id#);
-      background:#FFF;
+      background:#AAAAAA;
+      width: 100px;
+
     }
 
     [data-theme="core2019_Dark"] .box_full{
@@ -62,7 +61,7 @@ nom       Nom personnalisé du widget (par défaut le nom de la commande)
     }
 
     .box_bottom#id# {
-      line-height: 20px;
+      line-height: 23px;
       background: var(--couleuractualisee#id#);
     }
 
@@ -70,6 +69,7 @@ nom       Nom personnalisé du widget (par défaut le nom de la commande)
       text-align: center;
       /*mix-blend-mode: difference;*/
       color: white;
+
     }
 
     .unitetar {
@@ -84,7 +84,7 @@ nom       Nom personnalisé du widget (par défaut le nom de la commande)
     }
 
     :root {
-          --absent: #da3037;
+          --absent: #fc0303;
           --present: #30b455; /*#829f25;*/
           --noir: #000000;
           --gris: #838383;
