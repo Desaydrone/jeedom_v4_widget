@@ -22,11 +22,11 @@ couleurtv  Couleur des trait verticaux poubelle vide
 <div class="cmd cmd-widget #history#" data-type="info" data-subtype="numeric" data-template="badge" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
   <div style="margin:auto;display:flex;">
     <div class="icon-trash" style="float: left">
-      <div class="trash-lid" style="background-color: var(--couleuractualisee#id#);"></div>
-      <div class="trash-container" style="background-color: var(--couleuractualisee#id#);"></div>
-      <div class="trash-line-1"></div>
-      <div class="trash-line-2"></div>
-      <div class="trash-line-3"></div>
+      <div class="trash-lid#id#" style="background-color: var(--couleuractualisee#id#);"></div>
+      <div class="trash-container#id#" style="background-color: var(--couleuractualisee#id#);"></div>
+      <div class="trash-line-1#id#"></div>
+      <div class="trash-line-2#id#"></div>
+      <div class="trash-line-3#id#"></div>
     </div>
   </div>
 
@@ -64,13 +64,13 @@ couleurtv  Couleur des trait verticaux poubelle vide
       margin-bottom: 25px;*/
     }
 
-    .icon-trash .trash-lid {
+    .icon-trash .trash-lid#id# {
       width: 62%;
       height: 10%;
       position: absolute;
       left: 50%;
       margin-left: -31%;
-      top: 10.5%;
+      top: var(--top#id#);/*10.5%;*/
       background-color: #000;
       border-top-left-radius: 80%;
       border-top-right-radius: 80%;
@@ -80,7 +80,7 @@ couleurtv  Couleur des trait verticaux poubelle vide
       transform: rotate(var(--anglecouvercle#id#));
     }
 
-    .icon-trash .trash-lid:after {
+    .icon-trash .trash-lid#id#:after {
       content: "";
       width: 26%;
       height: 100%;
@@ -97,7 +97,7 @@ couleurtv  Couleur des trait verticaux poubelle vide
       transform: rotate(-1deg);
     }
 
-    .icon-trash .trash-container {
+    .icon-trash .trash-container#id# {
       width: 56%;
       height: 65%;
       position: absolute;
@@ -109,7 +109,7 @@ couleurtv  Couleur des trait verticaux poubelle vide
       border-bottom-right-radius: 15%;
     }
 
-    .icon-trash .trash-container:after {
+    .icon-trash .trash-container#id#:after {
       content: "";
       width: 110%;
       height: 12%;
@@ -122,7 +122,7 @@ couleurtv  Couleur des trait verticaux poubelle vide
       border-bottom-right-radius: 45%;
     }
 
-    .icon-trash .trash-line-1 {
+    .icon-trash .trash-line-1#id# {
       width: 4%;
       height: 50%;
       position: absolute;
@@ -132,7 +132,7 @@ couleurtv  Couleur des trait verticaux poubelle vide
       background-color: var(--couleurtraits#id#);
     }
 
-    .icon-trash .trash-line-2 {
+    .icon-trash .trash-line-2#id# {
       width: 4%;
       height: 50%;
       position: absolute;
@@ -142,7 +142,7 @@ couleurtv  Couleur des trait verticaux poubelle vide
       background-color: var(--couleurtraits#id#);
     }
 
-    .icon-trash .trash-line-3 {
+    .icon-trash .trash-line-3#id# {
       width: 4%;
       height: 50%;
       position: absolute;
@@ -171,12 +171,14 @@ couleurtv  Couleur des trait verticaux poubelle vide
         document.documentElement.style.setProperty('--couleuractualisee#id#', couleurp#id#);
         document.documentElement.style.setProperty('--couleurtraits#id#', couleurtp#id#);
         document.documentElement.style.setProperty('--anglecouvercle#id#', "-5deg");
+        document.documentElement.style.setProperty('--top#id#', "10.5%");
 
       }
       else {
         document.documentElement.style.setProperty('--couleuractualisee#id#', couleurv#id#);
         document.documentElement.style.setProperty('--couleurtraits#id#', couleurtv#id#);
         document.documentElement.style.setProperty('--anglecouvercle#id#', "0deg");
+        document.documentElement.style.setProperty('--top#id#', "15.5%");
 
       }
 
