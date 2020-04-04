@@ -40,14 +40,14 @@ couleurtv  Couleur des trait verticaux poubelle vide
 
 
   <style>
-
     :root {
-        --couleuractualisee#id#:#017D37;
-        --couleurtraits#id#: #05481F;
-        --taillep#id#:100px;
-        --anglecouvercle#id#:-5deg;
-        --top#id#: 10.5%;
+      --couleuractualisee#id#: #017D37;
+      --couleurtraits#id#: #05481F;
+      --taillep#id#: 100px;
+      --anglecouvercle#id#: -5deg;
+      --top#id#: 10.5%;
     }
+
     .cmdNametar#id# {
       text-align: center;
       color: black;
@@ -70,7 +70,8 @@ couleurtv  Couleur des trait verticaux poubelle vide
       position: absolute;
       left: 50%;
       margin-left: -31%;
-      top: var(--top#id#);/*10.5%;*/
+      top: var(--top#id#);
+      /*10.5%;*/
       background-color: #000;
       border-top-left-radius: 80%;
       border-top-right-radius: 80%;
@@ -129,7 +130,9 @@ couleurtv  Couleur des trait verticaux poubelle vide
       left: 38%;
       margin-left: -2%;
       bottom: 17%;
-      background-color: var(--couleurtraits#id#);
+      background-color: #232323;
+      mix-blend-mode: soft-light;
+      /*background-color: var(--couleurtraits#id#);*/
     }
 
     .icon-trash .trash-line-2#id# {
@@ -139,7 +142,9 @@ couleurtv  Couleur des trait verticaux poubelle vide
       left: 50%;
       margin-left: -2%;
       bottom: 17%;
-      background-color: var(--couleurtraits#id#);
+      background-color: #232323;
+      mix-blend-mode: soft-light;
+      /*background-color: var(--couleurtraits#id#);*/
     }
 
     .icon-trash .trash-line-3#id# {
@@ -149,7 +154,10 @@ couleurtv  Couleur des trait verticaux poubelle vide
       left: 62%;
       margin-left: -2%;
       bottom: 17%;
-      background-color: var(--couleurtraits#id#);
+      background-color: #232323;
+      mix-blend-mode: soft-light;
+      /background-color: var(--couleurtraits#id#);
+      */
     }
   </style>
 
@@ -157,30 +165,47 @@ couleurtv  Couleur des trait verticaux poubelle vide
     jeedom.cmd.update['#id#'] = function(_options) {
       var cmd = $('.cmd[data-cmd_id=#id#]');
       //Définition des paramètres
-      var nom#id# = ('#nom#' != '#' + 'nom#') ? "#nom#" : "#name#"; // remplace le nom de la commande par celui de votre choix
-      var taille#id# = ('#taille#' != '#' + 'taille#') ? parseInt('#taille#') : "100";
-      var couleurp#id# = ('#couleurp#' != '#' + 'couleurp#') ? "#couleurp#" : "#017D37";
-      var couleurv#id# = ('#couleurv#' != '#' + 'couleurv#') ? "#couleurv#" : "#4E5156";
-      var couleurtp#id# = ('#couleurtp#' != '#' + 'couleurtp#') ? "#couleurtp#" : "#05481F";
-      var couleurtv#id# = ('#couleurtv#' != '#' + 'couleurtv#') ? "#couleurtv#" : "#45484D";
+      var nom# id# = ('#nom#' != '#' + 'nom#') ? "#nom#" : "#name#"; // remplace le nom de la commande par celui de votre choix
+      var taille# id# = ('#taille#' != '#' + 'taille#') ? parseInt('#taille#') : "100";
+
+      var couleur# id# = ('#couleur#' != '#' + 'couleur#') ? "#couleur#" : "#4E5156";
+      couleur# id# = couleur# id#.split(',');
+
+      //valeur pleine #017D37
+
       var valeur = _options.display_value;
-      cmd.find('.cmdNametar#id#').empty().append(nom#id#);
-      document.documentElement.style.setProperty('--taillep#id#', taille#id# + "px");
 
-      if (valeur == 1){
-        document.documentElement.style.setProperty('--couleuractualisee#id#', couleurp#id#);
-        document.documentElement.style.setProperty('--couleurtraits#id#', couleurtp#id#);
-        document.documentElement.style.setProperty('--anglecouvercle#id#', "-5deg");
-        document.documentElement.style.setProperty('--top#id#', "10.5%");
+      cmd.find('.cmdNametar#id#').empty().append(nom# id#);
+      document.documentElement.style.setProperty('--taillep#id#', taille# id# + "px");
+
+      for (let i = 0; i < couleur# id#.length; i++) {
+        alert(couleur# id#[i]);
+
+        if (valeur == i) {
+          document.documentElement.style.setProperty('--couleuractualisee#id#', couleur# id#[i]);
+          if (valeur > 0) {
+            document.documentElement.style.setProperty('--anglecouvercle#id#', "-5deg");
+            document.documentElement.style.setProperty('--top#id#', "10.5%");
+          } else {
+            document.documentElement.style.setProperty('--anglecouvercle#id#', "0deg");
+            document.documentElement.style.setProperty('--top#id#', "15.5%");
+          }
+        }
 
       }
-      else {
-        document.documentElement.style.setProperty('--couleuractualisee#id#', couleurv#id#);
-        document.documentElement.style.setProperty('--couleurtraits#id#', couleurtv#id#);
-        document.documentElement.style.setProperty('--anglecouvercle#id#', "0deg");
-        document.documentElement.style.setProperty('--top#id#', "15.5%");
 
-      }
+      /*      if (valeur == 1){
+              document.documentElement.style.setProperty('--couleuractualisee#id#', c1#id#);
+              document.documentElement.style.setProperty('--anglecouvercle#id#', "-5deg");
+              document.documentElement.style.setProperty('--top#id#', "10.5%");
+
+            }
+            else {
+              document.documentElement.style.setProperty('--couleuractualisee#id#', cv#id#);
+              document.documentElement.style.setProperty('--anglecouvercle#id#', "0deg");
+              document.documentElement.style.setProperty('--top#id#', "15.5%");
+
+            }*/
 
 
       $('.cmd[data-cmd_id=#id#]').attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
