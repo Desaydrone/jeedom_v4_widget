@@ -39,17 +39,10 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
   <style>
     :root {
       --couleuractualisee#id#: #017D37;
-      --couleurtraits#id#: #05481F;
       --taillep#id#: 100px;
       --anglecouvercle#id#: -5deg;
       --top#id#: 10.5%;
     }
-
-    .cmdNametar#id# {
-      text-align: center;
-      color: black;
-    }
-
 
     .icon-trash#id# {
       width: var(--taillep#id#);
@@ -167,7 +160,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
 
       var valeur = _options.display_value;
 
-      cmd.find('.cmdNametar#id#').empty().append(nom#id#);
+      cmd.find('.cmdName').empty().append(nom#id#);
       document.documentElement.style.setProperty('--taillep#id#', taille#id# + "px");
 
       for (let i = 0; i < couleur#id#.length; i++) {
@@ -176,7 +169,6 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
             cmd.find('.trash-line-1#id#').hide();
             cmd.find('.trash-line-2#id#').hide();
             cmd.find('.trash-line-3#id#').hide();
-
           }
           else{
             cmd.find('.trash-line-1#id#').show();
