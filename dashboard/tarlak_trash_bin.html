@@ -1,6 +1,6 @@
 <!--
 //Tarlak :
-Version  0.1 :  - Refonte du widget, meilleurs utilisation du css pour ne plus avoir de décallage
+Version  0.2 :  - Refonte du widget, meilleurs utilisation du css pour ne plus avoir de décallage
                 - Suppression des bornages de température pour définir les différents couleurs, elles sont
                 maintenant calculée en fonction d'une couleur chaude et d'une couleur froide
                 - De nouveau paramètre permettent une meilleur personalisation
@@ -18,7 +18,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
 
 <div class="cmd cmd-widget #history#" data-type="info" data-subtype="numeric" data-template="badge" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
   <div style="margin:auto;display:flex;">
-    <div class="icon-trash" style="float: left">
+    <div class="icon-trash#id#" style="float: left">
       <div class="trash-lid#id#" style="background-color: var(--couleuractualisee#id#);"></div>
       <div class="trash-container#id#" style="background-color: var(--couleuractualisee#id#);"></div>
       <div class="trash-line-1#id#"></div>
@@ -51,7 +51,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
     }
 
 
-    .icon-trash {
+    .icon-trash#id# {
       width: var(--taillep#id#);
       height: var(--taillep#id#);
       position: relative;
@@ -61,7 +61,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
       margin-bottom: 25px;*/
     }
 
-    .icon-trash .trash-lid#id# {
+    .icon-trash#id# .trash-lid#id# {
       width: 62%;
       height: 10%;
       position: absolute;
@@ -78,7 +78,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
       transform: rotate(var(--anglecouvercle#id#));
     }
 
-    .icon-trash .trash-lid#id#:after {
+    .icon-trash#id# .trash-lid#id#:after {
       content: "";
       width: 26%;
       height: 100%;
@@ -95,7 +95,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
       transform: rotate(-1deg);
     }
 
-    .icon-trash .trash-container#id# {
+    .icon-trash#id# .trash-container#id# {
       width: 56%;
       height: 65%;
       position: absolute;
@@ -107,7 +107,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
       border-bottom-right-radius: 15%;
     }
 
-    .icon-trash .trash-container#id#:after {
+    .icon-trash#id# .trash-container#id#:after {
       content: "";
       width: 110%;
       height: 12%;
@@ -120,7 +120,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
       border-bottom-right-radius: 45%;
     }
 
-    .icon-trash .trash-line-1#id# {
+    .icon-trash#id# .trash-line-1#id# {
       width: 4%;
       height: 50%;
       position: absolute;
@@ -132,7 +132,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
       /*background-color: var(--couleurtraits#id#);*/
     }
 
-    .icon-trash .trash-line-2#id# {
+    .icon-trash#id# .trash-line-2#id# {
       width: 4%;
       height: 50%;
       position: absolute;
@@ -144,7 +144,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
       /*background-color: var(--couleurtraits#id#);*/
     }
 
-    .icon-trash .trash-line-3#id# {
+    .icon-trash#id# .trash-line-3#id# {
       width: 4%;
       height: 50%;
       position: absolute;
@@ -177,6 +177,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
 
         if (valeur == i) {
           document.documentElement.style.setProperty('--couleuractualisee#id#', couleur#id#[i]);
+
           if (valeur > 0) {
             document.documentElement.style.setProperty('--anglecouvercle#id#', "-5deg");
             document.documentElement.style.setProperty('--top#id#', "10.5%");
