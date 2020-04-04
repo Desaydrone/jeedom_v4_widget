@@ -28,7 +28,7 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
   </div>
 
   <div class="title #hide_name#">
-    <div class="cmdNametar#id# cmdName">nom#id#</div>
+    <div class="cmdName">nom#id#</div>
   </div>
   <div class="cmdStats #hide_history#">
     <div class="col-xs-12 center-block">
@@ -171,8 +171,20 @@ couleur  Couleur de la poubelle quand elle est pleine / à sortir
       document.documentElement.style.setProperty('--taillep#id#', taille#id# + "px");
 
       for (let i = 0; i < couleur#id#.length; i++) {
-
         if (valeur == i) {
+          if(couleur#id#[i]=="transparent"){
+            cmd.find('.trash-line-1#id#').hide();
+            cmd.find('.trash-line-2#id#').hide();
+            cmd.find('.trash-line-3#id#').hide();
+
+          }
+          else{
+            cmd.find('.trash-line-1#id#').show();
+            cmd.find('.trash-line-2#id#').show();
+            cmd.find('.trash-line-3#id#').show();
+
+          }
+
           document.documentElement.style.setProperty('--couleuractualisee#id#', couleur#id#[i]);
 
           if (valeur > 0) {
