@@ -12,10 +12,7 @@ Thanks to Marty for is CSS code for the trash : https://codepen.io/okra/pen/mAtJ
 
 nom       Nom personnalisé du widget (par défaut le nom de la commande)
 taille    Taille en pixel (ex : 90)
-couleurp  Couleur de la poubelle quand elle est pleine / à sortir
-couleurv  Couleur de la poubelle quand elle est vide ()
-couleurtp  Couleur des trait verticaux poubelle pleine
-couleurtv  Couleur des trait verticaux poubelle vide
+couleur  Couleur de la poubelle quand elle est pleine / à sortir
 -->
 
 
@@ -165,24 +162,21 @@ couleurtv  Couleur des trait verticaux poubelle vide
     jeedom.cmd.update['#id#'] = function(_options) {
       var cmd = $('.cmd[data-cmd_id=#id#]');
       //Définition des paramètres
-      var nom# id# = ('#nom#' != '#' + 'nom#') ? "#nom#" : "#name#"; // remplace le nom de la commande par celui de votre choix
-      var taille# id# = ('#taille#' != '#' + 'taille#') ? parseInt('#taille#') : "100";
+      var nom#id# = ('#nom#' != '#' + 'nom#') ? "#nom#" : "#name#"; // remplace le nom de la commande par celui de votre choix
+      var taille#id# = ('#taille#' != '#' + 'taille#') ? parseInt('#taille#') : "100";
 
-      var couleur# id# = ('#couleur#' != '#' + 'couleur#') ? "#couleur#" : "#4E5156";
-      couleur# id# = couleur# id#.split(',');
-
-      //valeur pleine #017D37
+      var couleur#id# = ('#couleur#' != '#' + 'couleur#') ? "#couleur#" : "#4E5156";
+      couleur#id# = couleur#id#.split(',');
 
       var valeur = _options.display_value;
 
-      cmd.find('.cmdNametar#id#').empty().append(nom# id#);
-      document.documentElement.style.setProperty('--taillep#id#', taille# id# + "px");
+      cmd.find('.cmdNametar#id#').empty().append(nom#id#);
+      document.documentElement.style.setProperty('--taillep#id#', taille#id# + "px");
 
-      for (let i = 0; i < couleur# id#.length; i++) {
-        alert(couleur# id#[i]);
+      for (let i = 0; i < couleur#id#.length; i++) {
 
         if (valeur == i) {
-          document.documentElement.style.setProperty('--couleuractualisee#id#', couleur# id#[i]);
+          document.documentElement.style.setProperty('--couleuractualisee#id#', couleur#id#[i]);
           if (valeur > 0) {
             document.documentElement.style.setProperty('--anglecouvercle#id#', "-5deg");
             document.documentElement.style.setProperty('--top#id#', "10.5%");
@@ -193,20 +187,6 @@ couleurtv  Couleur des trait verticaux poubelle vide
         }
 
       }
-
-      /*      if (valeur == 1){
-              document.documentElement.style.setProperty('--couleuractualisee#id#', c1#id#);
-              document.documentElement.style.setProperty('--anglecouvercle#id#', "-5deg");
-              document.documentElement.style.setProperty('--top#id#', "10.5%");
-
-            }
-            else {
-              document.documentElement.style.setProperty('--couleuractualisee#id#', cv#id#);
-              document.documentElement.style.setProperty('--anglecouvercle#id#', "0deg");
-              document.documentElement.style.setProperty('--top#id#', "15.5%");
-
-            }*/
-
 
       $('.cmd[data-cmd_id=#id#]').attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
     }
