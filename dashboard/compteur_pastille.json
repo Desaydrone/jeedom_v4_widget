@@ -1,0 +1,33 @@
+{
+  "id": "",
+  "name": "compteur_pastille",
+  "type": "info",
+  "subtype": "numeric",
+  "template": "tmplmultistate",
+  "display": {
+    "icon": ""
+  },
+  "replace": {
+    "#_time_widget_#": "0",
+    "#_desktop_width_#": "",
+    "#_mobile_width_#": ""
+  },
+  "test": [
+    {
+      "operation": "#value#>0 && #value# < 100",
+      "state_light": "<span class=\"fa-stack\">   <i class=\"fas fa-circle\" style=\"color:Tomato\"></i>  <i class=\"fa-stack-1x\" style=\"font-size: small;color:white;\">#value#</i> </span>",
+      "state_dark": "<span class=\"fa-stack\">   <i class=\"fas fa-circle\" style=\"color:Tomato\"></i>  <i class=\"fa-stack-1x\" style=\"font-size: small;color:white;\">#value#</i> </span>"
+    },
+    {
+      "operation": "#value#<=0",
+      "state_light": "<span class=\"fa-stack\">   <i class=\"fas fa-circle\" style=\"color:transparent\"></i>  <i class=\"fa-stack-1x\" style=\"font-size: small;color:transparent;\">#value#</i> </span>",
+      "state_dark": "<span class=\"fa-stack\">   <i class=\"fas fa-circle\" style=\"color:transparent\"></i>  <i class=\"fa-stack-1x\" style=\"font-size: small;color:transparent;\">#value#</i> </span>"
+    },
+    {
+      "operation": "#value#>=100",
+      "state_light": "<span class=\"fa-stack fa-2x\">   <i class=\"fas fa-circle\" style=\"color:Tomato\"></i>  <i class=\"fa-stack-1x\" style=\"font-size: medium;color:white;\">#value#</i> </span>",
+      "state_dark": "<span class=\"fa-stack\">   <i class=\"fas fa-circle\" style=\"color:Tomato\"></i>  <i class=\"fa-stack-1x\" style=\"font-size: xx-small;color:white;\">#value#</i> </span>"
+    }
+  ],
+  "jeedomCoreVersion": "4.0.47"
+}
