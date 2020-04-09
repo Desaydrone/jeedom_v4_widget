@@ -1,5 +1,5 @@
 <!--
-Maj: 09 04 2020 06:48:00
+Maj: 09 04 2020 06:53:26
 -->
 <div class="cmd cmd-widget #history#" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
   <div class="content-lg#id#">
@@ -262,7 +262,6 @@ Maj: 09 04 2020 06:48:00
       cmd.find('.content-sm#id#').hide();
       cmd.find('.content-xs#id#').hide();
 
-      if (unite == "numerique" || unite == "%") {
         if (valeur >= minimum && valeur <= maximum#id#) {
           if (valeur > 50) {
             document.documentElement.style.setProperty('--degresd#id#', '180deg');
@@ -272,7 +271,6 @@ Maj: 09 04 2020 06:48:00
             document.documentElement.style.setProperty('--degresg#id#', '0deg');
           }
         }
-      }
       cmd.find('.cercle-value').empty().append(valeur + ' #unite#');
 
     } else if (type == "horizontal" && err == 0) {
