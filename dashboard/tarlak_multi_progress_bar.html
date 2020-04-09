@@ -1,5 +1,5 @@
 <!--
-Maj: 05 04 2020 08:04:16
+Maj: 09 04 2020 06:48:00
 -->
 <div class="cmd cmd-widget #history#" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
   <div class="content-lg#id#">
@@ -246,8 +246,8 @@ Maj: 05 04 2020 08:04:16
     var maximum#id# = ('#maxValue#' == '') ? 100 : parseInt('#maxValue#');
     var minimum = ('#minValue#' == '') ? 0 : parseInt('#minValue#');
     var err = 0;
-    if (unite == 'numerique') {
-      valeur = ((valeur * 100) / maximum#id#);
+    if (unite != '%') {
+      valeur = parseFloat(((valeur * 100) / maximum#id#)).toFixed(1);
       maximum#id# = ((maximum#id#*100)/maximum#id#);
     } else if (unite == "%" && (valeur < 0 || valeur > 100)) {
       valeur = 0;
