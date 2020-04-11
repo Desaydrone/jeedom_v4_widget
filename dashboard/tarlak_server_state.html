@@ -1,5 +1,5 @@
 <!--
-//Maj: 11 04 2020 20:50:39
+//Maj: 11 04 2020 22:03:16
 //Tarlak
 Version  0.1 :  - Refonte du widget, meilleurs utilisation du css pour ne plus avoir de décallage
                 - Suppression des bornages de température pour définir les différents couleurs, elles sont
@@ -9,8 +9,7 @@ Version  0.1 :  - Refonte du widget, meilleurs utilisation du css pour ne plus a
 Avec l'aide de Domotech pour l'amélioration css, grand merci a lui : http://youtube.com/domotech
 ** Paramètres option du widget
 
-server_type       permet de définir le type de serveur, valeur possible : server, database file
-blink     Permet d'empecher le clignotement
+server_type       paramaètre obligatoire, permet de définir le type de serveur
 -->
 
 
@@ -44,7 +43,8 @@ blink     Permet d'empecher le clignotement
 
 .server_list{
   background:#15202E;
-  border-radius: 8px;
+  border-radius: 4px;
+  padding:1px;
 
 }
 .server {
@@ -53,7 +53,7 @@ blink     Permet d'empecher le clignotement
    -webkit-box-align: center;
            align-items: center;
    padding: 10px 0;
-   /*border: 1px solid rgba(255, 255, 255, 0.1);*/
+   border: 1px solid rgba(255, 255, 255, 0.1);
    border-radius: 4px;
    white-space: nowrap;
    background-color: rgba(255, 255, 255, 0.1);
@@ -116,18 +116,14 @@ blink     Permet d'empecher le clignotement
 }
 
 .has-failed {
-  /*box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);*/
-  border: #d22c32;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  border: 1px solid #d22c32;
 }
 
-.animation_failed#id#{
+.animation_failed{
   -webkit-animation: alertblink 2s ease-in-out infinite;
           animation: alertblink 2s ease-in-out infinite;
 }
-
-/*.server-icon, .server-details .signal {
-  color: var(--cAlert);
-}*/
 
 
 
@@ -163,7 +159,6 @@ blink     Permet d'empecher le clignotement
 jeedom.cmd.update['#id#'] = function(_options){
   var widget = $('.cmd[data-cmd_id=#id#]').closest('.eqLogic').find('.widget-serverstate:first');
 
-
   if ('#name#' == 'server_name')
   {
     widget.find('.server_name').text('#state#');
@@ -174,8 +169,6 @@ jeedom.cmd.update['#id#'] = function(_options){
         widget.find('.server').addClass("has-failed");
         widget.find('.server-icon').css('color','var(--cAlert)');
         widget.find('.signal').css('color','var(--cAlert)');
-
-
       }else {
         widget.find('.server_status').text('ONLINE');
         widget.find('.server').removeClass("has-failed");
@@ -206,11 +199,5 @@ jeedom.cmd.update['#id#'] = function(_options){
       cmd.find('.server-icon').addClass(' #server_type#')
     }
   }
-
-
 </script>
-
-
-
-
-  </div>
+</div>
