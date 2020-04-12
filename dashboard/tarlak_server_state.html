@@ -1,5 +1,5 @@
 <!--
-//Maj: 12 04 2020 14:18:46
+//Maj: 12 04 2020 14:21:37
 //Tarlak
 Version  0.1 :  Première version du widget
 
@@ -157,7 +157,7 @@ jeedom.cmd.update['#id#'] = function(_options){
   var widget = $('.cmd[data-cmd_id=#id#]').closest('.eqLogic').find('.widget-serverstate:first');
 
   if('#name#' == 'server_status'){
-    var status =  parseInt(_options.display_value); // remplace le nom de la commande par celui de votre choix
+    var status =  parseInt(_options.display_value);
     if(status == 0){
       widget.find('.server_status').text('OFFLINE');
       widget.find('.server_list').addClass('has-failed');
@@ -168,10 +168,7 @@ jeedom.cmd.update['#id#'] = function(_options){
       widget.find('.server_list').removeClass("has-failed");
       widget.find('.server-icon').css('color','#C1C6CB;');
       widget.find('.signal').css('color','var(--cGood)');
-
     }
-    widget.attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
-
   }
   if ('#name#' == 'server_name')
   {
@@ -181,6 +178,7 @@ jeedom.cmd.update['#id#'] = function(_options){
   if('#name#' == 'server_ip'){
     widget.find('.server_ip').text('#state#');
   }
+  widget.attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
 
 }
 jeedom.cmd.update['#id#']({ display_value: '#state#', valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#'});
