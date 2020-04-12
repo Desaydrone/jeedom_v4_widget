@@ -1,5 +1,5 @@
 <!--
-//Maj: 11 04 2020 22:04:19
+//Maj: 12 04 2020 14:18:46
 //Tarlak
 Version  0.1 :  Première version du widget
 
@@ -10,7 +10,7 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
 -->
 
 
-<div class="cmd cmd-widget #history# widget-serverstate" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#">
+<div class="cmd cmd-widget #history# widget-serverstate" data-type="info" data-subtype="numeric" data-cmd_id="#id#" data-cmd_uid="#uid#" data-version="#version#" data-eqLogic_id="#eqLogic_id#" title="#collectDate#">
 
   <div class="server_list">
     <div class="server ">
@@ -39,9 +39,9 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
   }
 
 .server_list{
-  background:#15202E;
+  background:#15202E ;
   border-radius: 4px;
-  padding:1px;
+  /*padding:1px;*/
 
 }
 .server {
@@ -61,7 +61,7 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
   display: inline-block;
    font-size: 2.5rem;
    margin: 0 2rem;
-   color : #C1C6CB;
+   color : #C1C6CB ;
 }
 
 .server-details {
@@ -77,13 +77,13 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
   display: block;
   font-size: 1.2rem;
   line-height: 1.5;
-  color: #7e8794;
+  color: #7e8794 ;
   text-align:left;
 }
 
 .server-details li:last-child .data {
   font-weight: normal;
-  color: rgba(230, 245, 255, .32)
+  color: rgba(230, 245, 255, .32) ;
 }
 
 
@@ -93,11 +93,11 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
   padding: 0 1rem 0 0;
   font-weight: 600;
   text-align: right;
-  color: #c1c6cb;
+  color: #c1c6cb ;
 }
 
 .server-details .signal {
-  color: var(--cGood);
+  color: var(--cGood) ;
 }
 
 .signal::before {
@@ -114,7 +114,7 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
 
 .has-failed {
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  border: 1px solid #d22c32;
+  border: 1px solid #d22c32 ;
 }
 
 .animation_failed{
@@ -156,30 +156,34 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
 jeedom.cmd.update['#id#'] = function(_options){
   var widget = $('.cmd[data-cmd_id=#id#]').closest('.eqLogic').find('.widget-serverstate:first');
 
+  if('#name#' == 'server_status'){
+    var status =  parseInt(_options.display_value); // remplace le nom de la commande par celui de votre choix
+    if(status == 0){
+      widget.find('.server_status').text('OFFLINE');
+      widget.find('.server_list').addClass('has-failed');
+      widget.find('.server-icon').css('color','var(--cAlert)');
+      widget.find('.signal').css('color','var(--cAlert)');
+    }else {
+      widget.find('.server_status').text('ONLINE');
+      widget.find('.server_list').removeClass("has-failed");
+      widget.find('.server-icon').css('color','#C1C6CB;');
+      widget.find('.signal').css('color','var(--cGood)');
+
+    }
+    widget.attr('title', 'Valeur du ' + _options.valueDate + ', collectée le ' + _options.collectDate);
+
+  }
   if ('#name#' == 'server_name')
   {
     widget.find('.server_name').text('#state#');
-  }
-  if('#name#' == 'server_status'){
-      if('#state#' == 0){
-        widget.find('.server_status').text('OFFLINE');
-        widget.find('.server').addClass("has-failed");
-        widget.find('.server-icon').css('color','var(--cAlert)');
-        widget.find('.signal').css('color','var(--cAlert)');
-      }else {
-        widget.find('.server_status').text('ONLINE');
-        widget.find('.server').removeClass("has-failed");
-        widget.find('.server-icon').css('color','#C1C6CB;');
-      }
   }
 
   if('#name#' == 'server_ip'){
     widget.find('.server_ip').text('#state#');
   }
-}
-  jeedom.cmd.update['#id#']({ display_value: '#state#', valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#'
-  });
 
+}
+jeedom.cmd.update['#id#']({ display_value: '#state#', valueDate: '#valueDate#', collectDate: '#collectDate#', alertLevel: '#alertLevel#'});
 
   setTimeout(function(){
     if($('.cmd[data-cmd_id=#id#]').closest('.eqLogic').find('.widget-serverstate').length > 1){
@@ -196,5 +200,7 @@ jeedom.cmd.update['#id#'] = function(_options){
       cmd.find('.server-icon').addClass(' #server_type#')
     }
   }
+
+
 </script>
 </div>
