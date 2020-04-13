@@ -1,9 +1,13 @@
 <!--
-//Maj: 12 04 2020 14:21:37
+//Maj: 13 04 2020 16:16:40
 //Tarlak
 Version  0.1 :  Première version du widget
 
 Avec l'aide de Domotech pour l'amélioration css, grand merci a lui : http://youtube.com/domotech
+
+Thanks to Mithun Dhiman for is work : https://codepen.io/mi2oon/pen/ZXWZdV
+
+
 ** Paramètres option du widget
 
 server_type       paramaètre obligatoire, permet de définir le type de serveur
@@ -30,18 +34,19 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
 
 <style>
   @import url("https://fonts.googleapis.com/css?family=Lato:300,300italic");
-/*  @import url("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css");*/
 
   :root{
-    --cGood: #2eb35a;
-    --cAlert: #d22c32;
-    --cRgbAlert:210, 44, 50;
+    --cGood: #2eb35a;           /* Couleur du ONLINE n'affecte pas l'icone*/
+    --cAlert: #d22c32;          /* Couleur lors du OFFLINE, affecte aussi l'icone */
+    --cData:#C1C6CB;            /* Couleur du nom du server e de l'ione */
+    --cBackground: #15202E;     /* Couleur de fond */
+    --cIntitule: #7e8794;       /* Couleur des intitulés de ligne */
+    --cRgbAlert:210, 44, 50;    /* Non utilisée pour le momment, ne pas modifier */
   }
 
 .server_list{
-  background:#15202E ;
+  background:var(--cBackground) ;
   border-radius: 4px;
-  /*padding:1px;*/
 
 }
 .server {
@@ -61,7 +66,7 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
   display: inline-block;
    font-size: 2.5rem;
    margin: 0 2rem;
-   color : #C1C6CB ;
+   color : var(--cData) ;
 }
 
 .server-details {
@@ -77,7 +82,7 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
   display: block;
   font-size: 1.2rem;
   line-height: 1.5;
-  color: #7e8794 ;
+  color: var(--cIntitule) ;
   text-align:left;
 }
 
@@ -93,7 +98,7 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
   padding: 0 1rem 0 0;
   font-weight: 600;
   text-align: right;
-  color: #c1c6cb ;
+  color: var(--cData) ;
 }
 
 .server-details .signal {
@@ -114,7 +119,7 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
 
 .has-failed {
   box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-  border: 1px solid #d22c32 ;
+  border: 1px solid var(--cAlert);
 }
 
 .animation_failed{
@@ -158,15 +163,18 @@ jeedom.cmd.update['#id#'] = function(_options){
 
   if('#name#' == 'server_status'){
     var status =  parseInt(_options.display_value);
+
     if(status == 0){
       widget.find('.server_status').text('OFFLINE');
       widget.find('.server_list').addClass('has-failed');
+      /*widget.find('.server_list').addClass('animation_failed');*/
       widget.find('.server-icon').css('color','var(--cAlert)');
       widget.find('.signal').css('color','var(--cAlert)');
     }else {
       widget.find('.server_status').text('ONLINE');
       widget.find('.server_list').removeClass("has-failed");
-      widget.find('.server-icon').css('color','#C1C6CB;');
+      widget.find('.server_list').removeClass("animation_failed");
+      widget.find('.server-icon').css('color','var(--cData)');
       widget.find('.signal').css('color','var(--cGood)');
     }
   }
@@ -193,11 +201,11 @@ jeedom.cmd.update['#id#']({ display_value: '#state#', valueDate: '#valueDate#', 
   if ('#server_type#' != '')
   {
     let cmd = $('.cmd[data-cmd_id=#id#]').closest('.eqLogic').find('.widget-serverstate').first();
-
     if('#server_type#' != ''){
-      cmd.find('.server-icon').addClass(' #server_type#')
+      cmd.find('.server-icon').addClass(' #server_type#');
     }
   }
+
 
 
 </script>
