@@ -41,7 +41,7 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
     --cData:#C1C6CB;            /* Couleur du nom du server e de l'ione */
     --cBackground: #15202E;     /* Couleur de fond */
     --cIntitule: #7e8794;       /* Couleur des intitulés de ligne */
-    --cRgbAlert:210, 44, 50;    /* Non utilisée pour le momment, ne pas modifier */
+    --cRgbAlert:210, 44, 50;    /* Non utilisée pour le moment, ne pas modifier */
   }
 
 .server_list{
@@ -159,6 +159,17 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
 </style>
 <script>
 jeedom.cmd.update['#id#'] = function(_options){
+
+  // récupération des paramètres
+  let cGood = ('#couleurOnline#' != '#' + 'couleurOnline#') ? "#couleurOnline#" : '#2eb35a';
+  document.documentElement.style.setProperty('--cGood', cGood);
+  let cAlert = ('#couleurOffline#' != '#' + 'couleurOffline#') ? "#couleurOffline#" : '#d22c32';
+  document.documentElement.style.setProperty('--cAlert', cAlert);
+  let cData = ('#couleurNomServeur#' != '#' + 'couleurNomServeur#') ? "#couleurNomServeur#" : '#C1C6CB';
+  document.documentElement.style.setProperty('--cData', cData);
+  let cBackground = ('#couleurFond#' != '#' + 'couleurFond#') ? "#couleurFond#" : '#15202E';
+  document.documentElement.style.setProperty('--cBackground', cBackground);
+
   var widget = $('.cmd[data-cmd_id=#id#]').closest('.eqLogic').find('.widget-serverstate:first');
 
   if('#name#' == 'server_status'){
