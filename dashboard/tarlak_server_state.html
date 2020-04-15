@@ -1,5 +1,5 @@
 <!--
-//Maj: 13 04 2020 16:16:40
+//Maj: 15 04 2020 18:27:43
 //Tarlak
 Version  0.1 :  Première version du widget
 
@@ -38,7 +38,7 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
   :root{
     --cGood: #2eb35a;           /* Couleur du ONLINE n'affecte pas l'icone*/
     --cAlert: #d22c32;          /* Couleur lors du OFFLINE, affecte aussi l'icone */
-    --cData:#C1C6CB;            /* Couleur du nom du server e de l'ione */
+    --cData:#C1C6CB;            /* Couleur du nom du server e de l'icone */
     --cBackground: #15202E;     /* Couleur de fond */
     --cIntitule: #7e8794;       /* Couleur des intitulés de ligne */
     --cRgbAlert:210, 44, 50;    /* Non utilisée pour le momment, ne pas modifier */
@@ -159,11 +159,34 @@ server_type       paramaètre obligatoire, permet de définir le type de serveur
 </style>
 <script>
 jeedom.cmd.update['#id#'] = function(_options){
+
+  if('#couleurOnline#' != '\#couleurOnline\#'){
+    let cGood = ('#couleurOnline#' != '#' + 'couleurOnline#') ? "#couleurOnline#" : '#2eb35a';
+    document.documentElement.style.setProperty('--cGood', cGood);
+  }
+  if('#couleurOffline#' != '\#couleurOffline\#'){
+    let cAlert = ('#couleurOffline#' != '#' + 'couleurOffline#') ? "#couleurOffline#" : '#d22c32';
+    document.documentElement.style.setProperty('--cAlert', cAlert);
+  }
+
+  if('#couleurIntitule#' != '\#couleurIntitule\#'){
+    let cIntitule = ('#couleurIntitule#' != '#' + 'couleurIntitule#') ? "#couleurIntitule#" : '#7e8794';
+    document.documentElement.style.setProperty('--cIntitule', cData);
+  }
+
+  if('#couleurNomServeur#' != '\#couleurNomServeur\#'){
+    let cData = ('#couleurNomServeur#' != '#' + 'couleurNomServeur#') ? "#couleurNomServeur#" : '#C1C6CB';
+    document.documentElement.style.setProperty('--cAlert', cData);
+  }
+  if('#couleurFond#' != '\#couleurFond\#'){
+    let cBackground = ('#couleurFond#' != '#' + 'couleurFond#') ? "#couleurFond#" : '#15202E';
+    document.documentElement.style.setProperty('--cBackground', cBackground);
+  }
+
   var widget = $('.cmd[data-cmd_id=#id#]').closest('.eqLogic').find('.widget-serverstate:first');
 
   if('#name#' == 'server_status'){
     var status =  parseInt(_options.display_value);
-
     if(status == 0){
       widget.find('.server_status').text('OFFLINE');
       widget.find('.server_list').addClass('has-failed');
@@ -205,7 +228,6 @@ jeedom.cmd.update['#id#']({ display_value: '#state#', valueDate: '#valueDate#', 
       cmd.find('.server-icon').addClass(' #server_type#');
     }
   }
-
 
 
 </script>
