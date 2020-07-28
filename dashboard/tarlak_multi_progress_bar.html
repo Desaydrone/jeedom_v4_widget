@@ -240,6 +240,7 @@ Maj: 28 04 2020 14:11:54
     var cmd = $('.cmd[data-cmd_id=#id#]');
 
     var valeur = _options.display_value;
+    var val_affiche= valeur;
     var inverser = ('#inverser#' == '') ? 1 : parseInt('#inverser#');
     var type   = ('#type#'   !='#'+'type#') ?   "#type#"  :"cercle";
     var unite = ('#unite#' == '') ? 'numerique' : '#unite#';
@@ -271,7 +272,7 @@ Maj: 28 04 2020 14:11:54
             document.documentElement.style.setProperty('--degresg#id#', '0deg');
           }
         }
-      cmd.find('.cercle-value').empty().append(valeur + ' #unite#');
+      cmd.find('.cercle-value').empty().append(val_affiche + ' #unite#');
 
     } else if (type == "horizontal" && err == 0) {
       cmd.find('.content-lg#id#').hide();
@@ -279,7 +280,7 @@ Maj: 28 04 2020 14:11:54
       if (valeur >= minimum && valeur <= maximum#id#) {
         cmd.find('.horizontal_bar').attr('style', 'width: ' + valeur + '%;');
       }
-      cmd.find('.horizontal_bar').empty().append(valeur + ' #unite#');
+      cmd.find('.horizontal_bar').empty().append(val_affiche + ' #unite#');
 
     } else if (type == "vertical" && err == 0) {
       cmd.find('.content-lg#id#').hide();
@@ -287,7 +288,7 @@ Maj: 28 04 2020 14:11:54
       if (valeur >= minimum && valeur <= maximum#id#) {
         cmd.find('.vertical_bar#id#').attr('style', 'height: ' + valeur + '%;');
       }
-      cmd.find('.vertical_value').empty().append(valeur + ' #unite#');
+      cmd.find('.vertical_value').empty().append(val_affiche + ' #unite#');
     }
 
     if(valeur>=((maximum#id#/5)*0) && valeur <(maximum#id#/5)) {
